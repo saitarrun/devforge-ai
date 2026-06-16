@@ -187,21 +187,10 @@
 
                 <!-- Idle Agents Section -->
                 <div class="space-y-2">
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-outline-variant text-[20px]">pause_circle</span>
-                            <h4 class="font-headline-md text-headline-md text-outline-variant">Available Agents</h4>
-                            <span class="text-on-surface-variant font-code-sm" id="idle-count">(26)</span>
-                        </div>
-                        <select id="phase-filter" class="bg-surface-container-low border border-outline-variant px-4 py-1.5 font-body-sm text-body-sm focus:outline-none focus:border-primary-fixed transition-colors cursor-pointer">
-                            <option value="">All Phases</option>
-                            <option value="Planning">Planning</option>
-                            <option value="Design">Design</option>
-                            <option value="Development">Development</option>
-                            <option value="Testing & Security">Testing & Security</option>
-                            <option value="Deployment">Deployment</option>
-                            <option value="Operations">Operations</option>
-                        </select>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-outline-variant text-[20px]">pause_circle</span>
+                        <h4 class="font-headline-md text-headline-md text-outline-variant">Available Agents</h4>
+                        <span class="text-on-surface-variant font-code-sm" id="idle-count">(26)</span>
                     </div>
                     <div class="bg-surface-container-lowest border border-outline-variant">
                         <div class="overflow-x-auto">
@@ -339,22 +328,6 @@
     document.getElementById('pause-all-btn').addEventListener('click', () => {
         console.log('Pause All clicked');
         pauseAllAgents();
-    });
-
-    // Phase filter dropdown
-    document.getElementById('phase-filter').addEventListener('change', (e) => {
-        const selectedPhase = e.target.value;
-        const idleTbody = document.getElementById('idle-agents-table');
-        const rows = idleTbody.querySelectorAll('tr');
-
-        rows.forEach(row => {
-            const phase = row.getAttribute('data-phase') || '';
-            if (selectedPhase === '' || phase === selectedPhase) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
     });
 
     // Populate idle agents with all available agents
