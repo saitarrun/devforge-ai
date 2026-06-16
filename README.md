@@ -194,6 +194,25 @@ For faster iteration, run individual phases:
 /sdlc-ops --framework prometheus                 # Phase 6 (SRE + monitoring)
 ```
 
+### Dashboard — Real-Time Agent Monitoring
+
+Visualize all agents running across phases with status, metrics, and artifacts:
+
+```bash
+npm run ui -- --dir /path/to/project                 # Launch dashboard on :4242
+npm run ui                                            # Use current directory
+npm run ui -- --port 3000                             # Custom port
+```
+
+The dashboard provides:
+- **Live Agent Status**: Phase-by-phase cards showing which agents are complete/working/waiting/blocked
+- **Execution Metrics**: Speedup factor, parallel efficiency, total duration, blockers, conflicts
+- **Messages Log**: Inter-agent communication (requests, artifacts, blockers)
+- **Artifacts Viewer**: Browse and view all run artifacts (markdown, logs, generated code)
+- **Multi-Run History**: Sidebar lists recent runs with completion status
+
+Open `http://localhost:4242` and select a run to start. The UI polls every 2 seconds during active runs.
+
 ### Code Review
 
 Perform industry-standard review on any PR:
