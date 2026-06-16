@@ -1,6 +1,6 @@
 # SDLC Workflow Plugin
 
-A comprehensive Claude Code plugin that automates the complete Software Development Lifecycle with 20 role-specific agents, 14 knowledge skills, and 9 commands, all guided by principles from:
+A comprehensive Claude Code plugin that automates the complete Software Development Lifecycle with 20 role-specific agents, 15 knowledge skills, and 9 commands, all guided by principles from:
 
 - **Software Engineering at Google** — QUANTS, INVEST, Critique/LGTM, Testing Pyramid, CI/CD
 - **Architecture: The Hard Parts** — ADR, coupling/cohesion, fitness functions, service design
@@ -58,7 +58,7 @@ A comprehensive Claude Code plugin that automates the complete Software Developm
 | `/sdlc-ops` | 6 | SLOs + security monitoring + data pipelines |
 | `/sdlc-review` | Any | SE@Google Critique-style PR review with gh pr comments |
 
-### 14 Knowledge Skills
+### 15 Knowledge Skills
 
 Skills inject methodology into agents (no tools/model — pure knowledge context):
 - `skill-requirements` — INVEST criteria, QUANTS framework
@@ -75,6 +75,7 @@ Skills inject methodology into agents (no tools/model — pure knowledge context
 - `skill-documentation` — Audience-first writing, docs-as-code
 - `skill-ops-sre` — SLO/SLI, QUANTS, error budgets, toil measurement
 - `skill-caveman` — Ultra-compressed communication, 75% token reduction, full technical accuracy
+- `skill-grill-me` — Relentless design review, decision tree interrogation, shared understanding
 
 ## Installation
 

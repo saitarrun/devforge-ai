@@ -1,7 +1,7 @@
 {
   "name": "sdlc-workflow",
   "version": "1.0.0",
-  "description": "Complete SDLC plugin: 20 agents across 6 phases, 14 skills including code quality standards and caveman mode, 9 orchestrator commands. Build products with enforced linting, testing pyramid, SAST/SCA scanning, CI/CD gates, and comprehensive documentation.",
+  "description": "Complete SDLC plugin: 20 agents across 6 phases, 15 skills including code quality, caveman mode, and design grilling, 9 orchestrator commands. Build products with enforced linting, testing pyramid, SAST/SCA scanning, CI/CD gates, and comprehensive documentation.",
   "keywords": [
     "sdlc",
     "workflow",
@@ -23,12 +23,12 @@
   },
   "license": "MIT",
   "agents": 20,
-  "skills": 14,
+  "skills": 15,
   "commands": 9,
   "highlights": [
     "20 specialized role-based agents",
     "6-phase SDLC orchestrator with approval gates",
-    "14 knowledge skills including code quality standards and caveman mode",
+    "15 knowledge skills including code quality, caveman mode, and design grilling",
     "Code quality enforcement: linting, testing pyramid, SAST/SCA, CI/CD gates",
     "Production-ready configuration templates",
     "Complete documentation and examples"
