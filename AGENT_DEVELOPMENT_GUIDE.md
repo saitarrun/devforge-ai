@@ -2,6 +2,93 @@
 
 Guide for writing agents that work in parallel with shared context and real-time communication.
 
+## Anatomy: Agents, Skills, Commands
+
+### Agent Structure
+
+Each agent is a `.md` file with YAML frontmatter and system prompt:
+
+```yaml
+---
+name: agent-name
+description: When to invoke this agent. Use when the user asks to "...", "...", or discusses "...".
+tools: Read, Bash, Write, Glob, Grep, WebFetch
+model: haiku|sonnet|opus
+color: optional-hex-or-name
+---
+
+# Agent Title
+
+Your system prompt here. Embed book principles (SE@Google QUANTS/Testing Pyramid, Architecture ADR/fitness functions, Pragmatic Programmer DRY/ETC, Clean Code SOLID/naming). Outline core responsibilities, key principles, process, output format, success criteria.
+```
+
+**Required fields**: `name` (snake-case), `description` (trigger keywords), `tools` (comma-separated list), `model` (haiku/sonnet/opus)
+
+**Model tiers**: Haiku for templated tasks (scaffolding, docs); Sonnet for development + analysis; Opus for high-leverage decisions (system architect, security architect, SRE)
+
+### Skill Structure
+
+Each skill is a directory with a `SKILL.md` file (no tools or model — pure knowledge):
+
+```
+skills/skill-name/
+  SKILL.md              # Required frontmatter + methodology content
+  references/           # Optional supporting docs
+    reference.md
+```
+
+**Frontmatter** (example):
+
+```yaml
+---
+name: skill-code-quality
+description: Use when the user asks about code quality, linting, testing standards, SAST/SCA, or CI/CD gates.
+version: 1.0.0
+---
+
+# Skill: Code Quality Standards
+
+[Methodology content, checklists, configuration examples]
+```
+
+Skills load on-demand, not always-on, so they don't bloat agent context.
+
+### Command Structure
+
+Commands are `.md` files with minimal frontmatter:
+
+```yaml
+---
+description: One-line help text shown in /help
+argument-hint: [optional-args]
+---
+
+# Command Title
+
+Body: Instructions for orchestrating agents, awaiting user input, producing artifacts.
+```
+
+### Adding a New Agent
+
+1. Create `agents/new-agent-name.md` with required frontmatter
+2. Write system prompt with book principles embedded
+3. Wire into a phase command (e.g., `commands/sdlc-dev.md`) or create a new command
+4. Run `make validate` to check file structure
+
+### Adding a New Skill
+
+1. Create `skills/skill-new-name/SKILL.md` with frontmatter
+2. Write methodology content (no code execution, no tools)
+3. Reference in agent descriptions or bodies when relevant
+4. Add reference files in `skills/skill-new-name/references/` if needed
+
+### Adding a New Phase
+
+1. Create 3–5 new agents for the phase
+2. Create a skill for phase methodology
+3. Create a command `/sdlc-phase-name`
+4. Wire the command into `/sdlc` master orchestrator
+
 ## Agent Lifecycle
 
 ```
