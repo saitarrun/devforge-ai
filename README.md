@@ -9,13 +9,15 @@ A comprehensive Claude Code plugin that automates the complete Software Developm
 
 ## Features
 
-### 20 Specialized Agents Across 6 Phases
+### 20 Specialized Agents + Auto-Skill Loading
+
+**All agents auto-load phase-specific skills** — when invoked, agents automatically apply relevant methodologies (skill-architecture for architects, skill-testing for testers, etc.) to produce industry-standard outputs. See AGENT_SKILLS_MANIFEST.md for complete mapping.
 
 **Phase 1 — Planning, Strategy & Requirements**
-- Product Manager (roadmap, milestones)
-- Business Analyst (user stories, acceptance criteria)
-- Software Architect (tech stack, ADR, system blueprint)
-- Security Architect (threat modeling, STRIDE)
+- Product Manager (roadmap, milestones) → skill-requirements, skill-prd-synthesis
+- Business Analyst (user stories, acceptance criteria) → skill-requirements, skill-plan-breakdown, skill-issue-triage
+- Software Architect (tech stack, ADR, system blueprint) → skill-architecture, skill-threat-modeling
+- Security Architect (threat modeling, STRIDE) → skill-threat-modeling, skill-security-audit
 
 **Phase 2 — Design & Prototyping**
 - UX Researcher (user journeys, personas)

@@ -42,12 +42,37 @@ Embed book principles (SE@Google QUANTS/INVEST/Testing Pyramid, Architecture: AD
 
 **Content**: Methodology, checklists, reference patterns. Load on-demand, not always-on.
 
+## Agent-Skill Auto-Wiring
+
+**All 20 agents are auto-wired to phase-specific skills.** When an agent is invoked:
+1. Agent frontmatter declares `skills: [skill-a, skill-b, ...]`
+2. Command loads all phase skills into agent context (pure methodology, not tools)
+3. Agent system prompt says: "You have access to these skills: X, Y, Z. Apply them."
+4. Agent applies skill principles → polished industry-standard outputs
+
+See **AGENT_SKILLS_MANIFEST.md** for complete mapping.
+
 ## Extending
 
-**New agent**: See AGENT_DEVELOPMENT_GUIDE.md step 1  
-**New skill**: See AGENT_DEVELOPMENT_GUIDE.md step 3  
-**New command**: Edit `/commands/sdlc.md` or create phase-specific command  
-**New phase**: Add 3–5 agents + skill + command, wire into `/sdlc` orchestrator
+**New agent**: 
+1. Create agent file with frontmatter `skills: [...]` 
+2. See AGENT_DEVELOPMENT_GUIDE.md for anatomy
+3. Wire into command or `/sdlc` orchestrator
+
+**New skill**: 
+1. Create `skills/skill-name/SKILL.md` with frontmatter + methodology
+2. Add to agent `skills:` field where relevant
+3. Update AGENT_SKILLS_MANIFEST.md mapping
+
+**New command**: 
+1. Edit `/commands/sdlc.md` or create `/commands/sdlc-phase-name.md`
+2. Command injects all phase skills before spawning agents
+
+**New phase**: 
+1. Add 3–5 agents with `skills:` field 
+2. Create phase skill with output standards
+3. Create command `/sdlc-phase-name.md`
+4. Wire into `/sdlc` orchestrator and AGENT_SKILLS_MANIFEST.md
 
 ## Troubleshooting
 
