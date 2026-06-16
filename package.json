@@ -38,16 +38,19 @@
     "integrations/",
     "README.md",
     "CLAUDE.md",
-    "INTEGRATIONS.md"
+    "INTEGRATIONS.md",
+    "QUICK_REFERENCE.md"
   ],
   "scripts": {
     "validate": "node scripts/validate-plugin.js",
     "install-local": "node scripts/install-local.js",
     "uninstall": "node scripts/uninstall.js",
+    "menu": "node scripts/sdlc-menu.js",
     "test": "echo 'Plugin tests would run here' && exit 0"
   },
   "bin": {
-    "sdlc-workflow": "scripts/cli.js"
+    "sdlc-workflow": "scripts/cli.js",
+    "sdlc": "scripts/sdlc-menu.js"
   },
   "claude": {
     "type": "plugin",

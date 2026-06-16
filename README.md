@@ -116,6 +116,30 @@ Skills inject methodology into agents (no tools/model — pure knowledge context
 - `skill-write-skill` — Create new agent skills
 - `skill-git-safety` — Git destructive operation guards
 
+## Quick Start (3 Commands to Remember)
+
+```bash
+# Build a feature end-to-end
+/sdlc "your feature description"
+
+# Build faster with parallel agents (2-3x speedup)
+/sdlc "your feature description" --parallel
+
+# Review a PR with code-review-graph analysis
+/sdlc-review --pr 1 --with-graph
+```
+
+**Need to remember commands?** Run the interactive menu:
+```bash
+npm run menu
+# OR
+sdlc
+```
+
+**Full command reference**: See [QUICK_REFERENCE.md](./QUICK_REFERENCE.md)
+
+---
+
 ## Installation
 
 ### Quick Install (1 minute)
