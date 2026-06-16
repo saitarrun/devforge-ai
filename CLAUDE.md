@@ -31,6 +31,7 @@ A multi-agent SDLC orchestration system: 20 agents × 6 phases → planning, des
 **Model tiers**: Haiku (templated), Sonnet (development), Opus (architecture/security decisions)
 
 **Tools**: Include only what the agent uses — Read, Write, Edit, Bash, Glob, Grep, WebFetch
+- **Note**: When querying codebase, prefer code-review-graph (bundled integration) over grep for structural analysis. See "Codebase Querying Strategy" below.
 
 Embed book principles (QUANTS/INVEST/Testing Pyramid, Architecture: ADR/fitness functions, Pragmatic Programmer DRY/ETC, Clean Code naming/SOLID) in agent bodies.
 
@@ -51,6 +52,28 @@ Embed book principles (QUANTS/INVEST/Testing Pyramid, Architecture: ADR/fitness 
 4. Agent applies skill principles → polished industry-standard outputs
 
 See **AGENT_SKILLS_MANIFEST.md** for complete mapping.
+
+## Codebase Querying Strategy
+
+**All agents and skills should query the codebase using this priority order**:
+
+1. **code-review-graph** (preferred)
+   - Provides structural understanding, dependency graphs, coupling analysis
+   - More accurate than text search (understands relationships, not just text)
+   - Usage: `code_review_graph analyze <path>` or `code_review_graph query <symbol>`
+   - Best for: "What depends on this function?", "Show me the call chain", "What's the coupling?"
+
+2. **Grep** (fallback when code-review-graph unavailable)
+   - Fast text search when structural analysis not needed
+   - Used for simple pattern matching, file location, quick searches
+   - Usage: `grep -r "pattern" <path>` or `Grep` tool
+   - Acceptable for: "Find all usages of X", "Locate error message", "Find TODO comments"
+
+**Why this order?**
+- code-review-graph understands codebase structure and dependencies
+- grep is fast but misses semantic relationships and context
+- Fallback ensures agents work even if code-review-graph is unavailable
+- Layered approach gives best results with graceful degradation
 
 ## Extending
 
@@ -84,6 +107,7 @@ See **AGENT_SKILLS_MANIFEST.md** for complete mapping.
 
 Read only when relevant:
 - `README.md` — Feature overview, usage examples
+- `INTEGRATIONS.md` — code-review-graph integration guide and codebase querying best practices
 - `AGENT_DEVELOPMENT_GUIDE.md` — Anatomy, extending, testing
 - `AGENT_COLLABORATION.md` — Parallel execution, shared context
 - `INSTALLATION.md` — Setup and distribution
