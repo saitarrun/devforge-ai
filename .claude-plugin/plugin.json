@@ -1,7 +1,7 @@
 {
   "name": "sdlc-workflow",
   "version": "1.0.0",
-  "description": "Complete SDLC plugin: 20 agents across 6 phases, 30 knowledge skills spanning planning/design/dev/test/deploy/ops plus utilities, 9 orchestrator commands. Build products with enforced linting, testing pyramid, SAST/SCA scanning, CI/CD gates, comprehensive documentation, Playwright E2E automation, multi-agent PR reviews, and mattpocock skill integrations.",
+  "description": "Complete Google Engineering Team in a Plugin: 26 agents across 9 phases (planning → incident response → retrospectives), 43 knowledge skills (core SDLC + Google practices + mattpocock integrations), 14 orchestrator commands. Full incident management, performance optimization, accessibility, observability, tech debt, release management, and organizational health.",
   "keywords": [
     "sdlc",
     "workflow",
@@ -22,13 +22,16 @@
     "email": "saitarrunpitta@gmail.com"
   },
   "license": "MIT",
-  "agents": 20,
-  "skills": 30,
-  "commands": 9,
+  "agents": 26,
+  "skills": 43,
+  "commands": 14,
   "highlights": [
     "20 specialized role-based agents",
     "6-phase SDLC orchestrator with approval gates",
-    "30 knowledge skills: core SDLC, multi-agent PR review, Playwright E2E automation, mattpocock integrations (PRD synthesis, TDD, diagnose, prototype, architecture refactor, etc.)",
+    "43 knowledge skills: 13 core SDLC, 30 Google practices (incident mgmt, perf, a11y, observability, release, tech debt, org health, etc.), 13 mattpocock integrations",
+    "6 new agents: Engineering Manager, Tech Lead, Release Manager, Technical Writer, Performance Engineer, Accessibility Engineer",
+    "5 new phases: Tech Debt Optimization, Incident Response, Retrospectives (+ 9 total)",
+    "Ready-to-use templates: RFC, design docs, ADRs, postmortems, SLOs, incident reports, performance benchmarks, accessibility audits"
     "Code quality enforcement: linting, testing pyramid, SAST/SCA, CI/CD gates",
     "Production-ready configuration templates",
     "Complete documentation and examples"

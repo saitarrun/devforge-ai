@@ -1,7 +1,7 @@
 {
   "name": "sdlc-workflow",
   "version": "1.0.0",
-  "description": "Complete Software Development Lifecycle plugin for Claude Code: 20 agents, 30 skills, 9 commands. Includes multi-agent PR review, Playwright E2E automation, and mattpocock skill integrations (PRD synthesis, TDD, diagnose, prototype, architecture refactor) for planning → design → development → testing → deployment → operations.",
+  "description": "Complete Google Engineering Team Plugin for Claude Code: 26 agents, 43 skills, 14 commands, 9 phases. Includes incident management, performance optimization, accessibility, tech debt, release management, retrospectives, organizational health. Covers planning → design → development → testing → deployment → operations → incidents → learning.",
   "keywords": [
     "claude-code",
     "plugin",

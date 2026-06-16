@@ -1,36 +1,50 @@
 # Agent-Skills Mapping Manifest
 
-This document maps which skills each agent should automatically load and apply during execution. When an agent is invoked, all associated skills should be injected into its context as methodology guides.
+**Complete Google Engineering Team** — 26 agents × 43 skills × 9 phases
+
+---
 
 ## How It Works
 
 1. **Agent frontmatter** includes `skills: [skill-name, ...]`
 2. **Commands** auto-load all phase-specific skills before spawning agents
-3. **Agent system prompt** begins with: "You have access to these skills: X, Y, Z. Apply their principles to your work."
-4. **Skill content** loads as context (not as tools — pure methodology)
-5. **Outputs** follow skill templates and industry standards
+3. **Agent system prompt** begins with: "You have access to these skills: X, Y, Z..."
+4. **Skill content** loads as context (pure methodology, not tools)
+5. **Outputs** follow skill templates and Google standards
+
+---
 
 ## Phase 1 — Planning, Strategy & Requirements
 
 ### product-manager
 **Skills**: skill-requirements, skill-prd-synthesis
-**Output standard**: PRD with QUANTS framework, roadmap milestones, success metrics
-**Key principles**: INVEST criteria, QUANTS (Quality, Attention, Toil, Time, Satisfaction)
+**Output**: PRD with QUANTS metrics, roadmap, success criteria
+**Key**: INVEST criteria, QUANTS framework, stakeholder alignment
 
 ### business-analyst
 **Skills**: skill-requirements, skill-plan-breakdown, skill-issue-triage
-**Output standard**: User stories with acceptance criteria, issue breakdown, triage workflow
-**Key principles**: INVEST user stories, tracer bullets, vertical slices
+**Output**: User stories (INVEST), vertical-slice breakdown, triage workflow
+**Key**: Tracer bullets, independent slices, acceptance criteria
 
 ### software-architect
-**Skills**: skill-architecture, skill-threat-modeling
-**Output standard**: ADR (Architecture Decision Record) with trade-off table, coupling analysis, fitness functions
-**Key principles**: ADR format (Context/Decision/Consequences), One-Version Rule, coupling spectrum
+**Skills**: skill-architecture, skill-threat-modeling, skill-api-design
+**Output**: ADR with trade-offs, coupling analysis, fitness functions, API contracts
+**Key**: ADR (Context/Decision/Consequences), One-Version Rule, API contracts
 
 ### security-architect
 **Skills**: skill-threat-modeling, skill-security-audit
-**Output standard**: Threat model (STRIDE/PASTA), attack surface map, control matrix
-**Key principles**: STRIDE methodology, attack surface ranking, security controls
+**Output**: Threat model (STRIDE/PASTA), attack surface map, security controls
+**Key**: Attack surface ranking, defense-in-depth, risk prioritization
+
+### tech-lead ⭐ NEW
+**Skills**: skill-architecture, skill-knowledge-management, skill-api-design, skill-code-review
+**Output**: RFC decisions, ADR reviews, mentoring plans, architecture consistency
+**Key**: RFC process, code review leadership, architectural oversight
+
+### engineering-manager ⭐ NEW
+**Skills**: skill-organizational-health, skill-knowledge-management, skill-tech-debt
+**Output**: Team retrospectives, QUANTS metrics, career growth plans, hiring rubrics
+**Key**: Blameless culture, psychological safety, continuous improvement
 
 ---
 

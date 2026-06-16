@@ -1,6 +1,6 @@
 # SDLC Workflow Plugin
 
-A comprehensive Claude Code plugin that automates the complete Software Development Lifecycle with 20 role-specific agents, 30 knowledge skills, and 9 commands, all guided by principles from:
+A complete Google Engineering Team in a Plugin: 26 agents across 9 phases, 43 knowledge skills, 14 commands. Covers planning → incident response → retrospectives, with industry-standard practices from Google, mattpocock, and SDLC best practices:
 
 - **Software Engineering at Google** — QUANTS, INVEST, Critique/LGTM, Testing Pyramid, CI/CD
 - **Architecture: The Hard Parts** — ADR, coupling/cohesion, fitness functions, service design
@@ -9,9 +9,17 @@ A comprehensive Claude Code plugin that automates the complete Software Developm
 
 ## Features
 
-### 20 Specialized Agents + Auto-Skill Loading
+### 26 Specialized Agents + Auto-Skill Loading (Phase 1 & 2 Complete)
 
-**All agents auto-load phase-specific skills** — when invoked, agents automatically apply relevant methodologies (skill-architecture for architects, skill-testing for testers, etc.) to produce industry-standard outputs. See AGENT_SKILLS_MANIFEST.md for complete mapping.
+**All agents auto-load phase-specific skills** — agents automatically apply relevant methodologies to produce Google-standard outputs. 
+
+**New agents in Phase 1 & 2**:
+- Engineering Manager (team health, retrospectives, QUANTS)
+- Tech Lead (architecture, RFC/ADR, mentoring)
+- Release Manager (versioning, canary rollout, release notes)
+- Technical Writer (API docs, SDKs, guides)
+- Performance Engineer (profiling, benchmarking, optimization)
+- Accessibility Engineer (WCAG 2.1 AA, screen readers, a11y)
 
 **Phase 1 — Planning, Strategy & Requirements**
 - Product Manager (roadmap, milestones) → skill-requirements, skill-prd-synthesis
@@ -60,7 +68,7 @@ A comprehensive Claude Code plugin that automates the complete Software Developm
 | `/sdlc-ops` | 6 | SLOs + security monitoring + data pipelines |
 | `/sdlc-review` | Any | SE@Google Critique-style PR review with gh pr comments |
 
-### 30 Knowledge Skills
+### 43 Knowledge Skills
 
 Skills inject methodology into agents (no tools/model — pure knowledge context). Organized by phase + utilities:
 
