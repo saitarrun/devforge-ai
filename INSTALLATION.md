@@ -26,7 +26,7 @@ If you want to develop agents, skills, or commands locally:
 #### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/saitarrun/sdlc-workflow.git
+git clone https://github.com/saitarrun/sdlc-ai-workflow.git
 cd sdlc-workflow
 ```
 

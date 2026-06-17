@@ -12,10 +12,10 @@
     "devops",
     "ci-cd"
   ],
-  "homepage": "https://github.com/saitarrun/sdlc-workflow",
+  "homepage": "https://github.com/saitarrun/sdlc-ai-workflow",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saitarrun/sdlc-workflow"
+    "url": "https://github.com/saitarrun/sdlc-ai-workflow"
   },
   "author": {
     "name": "saitarrun",

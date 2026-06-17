@@ -1,10 +1,10 @@
 # SDLC Workflow Plugin
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/saitarrun/sdlc-workflow?style=flat-square&logo=github&color=lightgrey)](https://github.com/saitarrun/sdlc-workflow/stargazers)
-[![npm version](https://img.shields.io/npm/v/sdlc-workflow?style=flat-square&color=blue)](https://www.npmjs.com/package/sdlc-workflow)
+[![GitHub Repo stars](https://img.shields.io/github/stars/saitarrun/sdlc-workflow?style=flat-square&logo=github&color=lightgrey)](https://github.com/saitarrun/sdlc-ai-workflow/stargazers)
+[![npm version](https://img.shields.io/npm/v/sdlc-ai-workflow?style=flat-square&color=blue)](https://www.npmjs.com/package/sdlc-ai-workflow)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude-Code-06B6D4?style=flat-square&logo=anthropic)](https://claude.ai/code)
-[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/sdlc-workflow)
+[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/sdlc-ai-workflow)
 [![Node.js](https://img.shields.io/badge/Node.js->=18.0.0-green?style=flat-square&logo=node.js)](https://nodejs.org/)
 
 **Topics**: `sdlc` `workflow` `automation` `agents` `claude-code` `orchestration` `devops` `testing` `security` `code-review` `architecture` `ai-powered`
@@ -48,7 +48,7 @@ sdlc-workflow install
 ### Option B: Install from Source
 
 ```bash
-git clone https://github.com/saitarrun/sdlc-workflow
+git clone https://github.com/saitarrun/sdlc-ai-workflow
 cd sdlc-workflow
 npm install
 npm run install-local

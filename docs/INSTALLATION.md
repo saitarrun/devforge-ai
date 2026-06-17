@@ -7,14 +7,14 @@ Get instant access to 20 role-based agents, 13 knowledge skills, and 9 commands 
 ### Option 1: NPM Installation (Recommended)
 
 ```bash
-npm install -g sdlc-workflow
+npm install -g sdlc-ai-workflow
 sdlc-workflow install
 ```
 
 ### Option 2: Local Installation (from source)
 
 ```bash
-git clone https://github.com/saitarrun/sdlc-workflow
+git clone https://github.com/saitarrun/sdlc-ai-workflow
 cd sdlc-workflow
 npm run install-local
 ```
@@ -224,8 +224,8 @@ Create a `.sdlc/config.json` in your project root to override defaults:
 
 ## Support
 
-- **Issues**: https://github.com/saitarrun/sdlc-workflow/issues
-- **Discussions**: https://github.com/saitarrun/sdlc-workflow/discussions
+- **Issues**: https://github.com/saitarrun/sdlc-ai-workflow/issues
+- **Discussions**: https://github.com/saitarrun/sdlc-ai-workflow/discussions
 - **Email**: saitarrunpitta@gmail.com
 
 ---

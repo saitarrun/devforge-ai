@@ -13,13 +13,13 @@
     "security",
     "devops"
   ],
-  "homepage": "https://github.com/saitarrun/sdlc-workflow",
+  "homepage": "https://github.com/saitarrun/sdlc-ai-workflow",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saitarrun/sdlc-workflow"
+    "url": "https://github.com/saitarrun/sdlc-ai-workflow"
   },
   "bugs": {
-    "url": "https://github.com/saitarrun/sdlc-workflow/issues"
+    "url": "https://github.com/saitarrun/sdlc-ai-workflow/issues"
   },
   "author": {
     "name": "saitarrun",

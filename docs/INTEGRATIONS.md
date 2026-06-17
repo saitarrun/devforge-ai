@@ -120,11 +120,11 @@ ELSE:
 
 ### For Plugin Users
 
-No additional installation required. When you install `sdlc-workflow`, code-review-graph comes pre-integrated:
+No additional installation required. When you install `sdlc-ai-workflow`, code-review-graph comes pre-integrated:
 
 ```bash
 # One-step install includes both
-npm install -g sdlc-workflow
+npm install -g sdlc-ai-workflow
 # ✓ SDLC Workflow plugin installed
 # ✓ code-review-graph integration enabled
 ```
@@ -138,7 +138,7 @@ To update the submodule:
 git submodule update --remote
 
 # Or clone with submodules
-git clone https://github.com/saitarrun/sdlc-workflow.git
+git clone https://github.com/saitarrun/sdlc-ai-workflow.git
 cd sdlc-workflow
 git submodule update --init --recursive
 ```
