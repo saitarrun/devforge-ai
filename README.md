@@ -296,6 +296,68 @@ npm run orchestrator -- --dir /path/to/project --port 4242 --run-id <optional-ru
 - `POST /api/agent/block/:agent` — Mark agent as blocked
 - `GET /events` — Server-Sent Events stream for real-time updates
 
+### Project Directory Structure
+
+Every SDLC run creates an organized project directory with clear separation of concerns:
+
+```
+./projects/<feature-name>/
+├── docs/                             ← All documentation
+│   ├── 01-grill-summary.md           ← Grill-me interview (source of truth)
+│   ├── 01-roadmap.md                 ← Product vision and milestones
+│   ├── 01-requirements.md            ← User stories + acceptance criteria
+│   ├── 01-architecture.md            ← ADR, tech stack, design
+│   ├── 01-threat-model.md            ← STRIDE threats + security controls
+│   ├── ARCHITECTURE.mmd              ← Mermaid diagrams (components, deployment)
+│   ├── 02-user-journeys.md           ← Personas and journey maps
+│   ├── 02-wireframes.md              ← UI designs + component specs
+│   ├── 03-implementation.log         ← Dev phase summary
+│   ├── 04-test-cases.md              ← Test strategy and coverage
+│   ├── 04-security.md                ← OWASP audit + pen test findings
+│   ├── 05-pipeline.log               ← CI/CD execution results
+│   ├── 06-slo.md                     ← SLOs, error budgets, runbooks
+│   ├── 06-secops.md                  ← Security monitoring setup
+│   ├── 06-data-pipelines.md          ← ETL/ELT workflows
+│   └── SUMMARY.md                    ← Final summary
+│
+├── frontend/                         ← Frontend application
+│   ├── src/
+│   │   ├── components/               ← Reusable UI components
+│   │   ├── pages/                    ← Page-level components
+│   │   └── services/                 ← API clients, utilities
+│   ├── public/                       ← Static assets
+│   ├── package.json
+│   └── Dockerfile
+│
+├── backend/services/                 ← Microservices architecture
+│   ├── api-gateway/                  ← Entry point for all requests
+│   │   ├── src/
+│   │   ├── package.json
+│   │   └── Dockerfile
+│   ├── <domain-service>/             ← One directory per service
+│   │   ├── src/
+│   │   ├── migrations/               ← Database migrations
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   └── Dockerfile
+│   └── ...
+│
+└── deployment/                       ← Infrastructure & DevOps
+    ├── .github/workflows/            ← GitHub Actions CI/CD
+    ├── docker/                       ← Containerization
+    │   ├── docker-compose.yml        ← Local dev orchestration
+    │   └── Dockerfiles/              ← Multi-stage builds
+    ├── k8s/                          ← Kubernetes manifests
+    ├── terraform/ or helm/           ← Infrastructure as Code
+    └── ...
+```
+
+**Key Principles:**
+- ✅ **Microservices by default**: Backend organized as `services/` with `api-gateway` + domain services
+- ✅ **Separation of concerns**: Code, docs, and deployment separate from start
+- ✅ **Production-ready structure**: Mirrors production architecture from Phase 1
+- ✅ **All artifacts organized**: Nothing at the root — everything in subdirectories
+
 ### Individual Phase Commands
 
 For faster iteration, run individual phases:

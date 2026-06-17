@@ -1,5 +1,5 @@
 ---
-description: Master orchestrator for the complete 6-phase SDLC pipeline. Runs all phases sequentially with approval gates between each phase. Maintains shared state in ./projects/<feature-name>/ directory.
+description: Master orchestrator for the complete 6-phase SDLC pipeline. Runs all phases sequentially with approval gates between each phase. Organizes artifacts into docs/, frontend/, backend/services/, and deployment/ directories.
 argument-hint: <feature-description> [--from <phase>] [--to <phase>]
 ---
 
@@ -29,7 +29,7 @@ The orchestrator runs agents sequentially across 6 phases:
 ## Process
 
 1. Parse feature request (or load from GitHub issue)
-2. Create `./projects/<feature-name>/` directory for shared state
+2. Create `./projects/<feature-name>/` with organized subdirectories: `docs/`, `frontend/src/`, `backend/services/api-gateway/src/`, `deployment/docker/`, `deployment/k8s/`, `deployment/.github/workflows/`
 3. Run Phase 1 (Product Manager grills customer to reach shared understanding) → **GATE**: User approves or requests changes
 4. Run Phase 2 → present results → **GATE**: User approves or requests changes
 5. ... repeat for all 6 phases ...
@@ -37,14 +37,17 @@ The orchestrator runs agents sequentially across 6 phases:
 
 ## Output
 
-All artifacts are written to `./projects/<feature-name>/`:
+All artifacts are organized into `./projects/<feature-name>/` with 4 subdirectories:
+
+**`docs/`** — All documentation and artifacts
+- `01-grill-summary.md` — Grill-me interview transcript and decisions
 - `01-roadmap.md` — Product vision, roadmap, milestones
 - `01-requirements.md` — User stories, acceptance criteria
 - `01-architecture.md` — ADR, component design, trade-off tables
 - `01-threat-model.md` — STRIDE analysis, security controls
 - `02-user-journeys.md` — Personas, journey maps
 - `02-wireframes.md` — UI design, component specs
-- `03-implementation.log` — Code changes per phase
+- `03-implementation.log` — Code changes summary
 - `04-test-cases.md` — Test suite, coverage report
 - `04-security.md` — OWASP audit, CVE scan, penetration test findings
 - `05-pipeline.log` — CI/CD status, deployment logs
@@ -52,6 +55,22 @@ All artifacts are written to `./projects/<feature-name>/`:
 - `06-secops.md` — Security monitoring configuration
 - `06-data-pipelines.md` — ETL/ELT workflows
 - `SUMMARY.md` — Final summary of all changes
+
+**`frontend/`** — Frontend application
+- `src/components/`, `src/pages/`, `src/services/` — React/Vue/Angular components and logic
+- `public/` — Static assets
+- `package.json` — Dependencies and scripts
+
+**`backend/services/`** — Microservices architecture
+- `api-gateway/src/` — API gateway service
+- `<domain-service>/src/` — One directory per domain service (derived from grill-me answers)
+- Each service: `package.json`, `Dockerfile`, `src/`
+
+**`deployment/`** — Infrastructure and DevOps
+- `docker/docker-compose.yml` — Local dev orchestration
+- `docker/Dockerfiles/` — Service-specific Dockerfiles
+- `k8s/` — Kubernetes manifests (deployments, services, ingress)
+- `.github/workflows/` — GitHub Actions CI/CD pipeline
 
 ## Gates (Approval Points)
 

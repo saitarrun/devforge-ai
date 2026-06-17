@@ -27,12 +27,19 @@ Run SDLC phases with multiple agents working in parallel, sharing context, and p
 
 ### 1. Workspace Initialization
 
-Creates shared workspace:
+Creates shared workspace structure:
 ```
 ./projects/<feature-name>/
-├── context.json                 # Shared by all agents
-├── collaboration-log.json       # Real-time agent messages
-└── phases/                      # Phase outputs
+├── docs/                        # All documentation artifacts
+├── frontend/src/                # Frontend application
+├── backend/services/            # Microservices
+│   ├── api-gateway/src/
+│   └── <domain-service>/src/
+├── deployment/                  # DevOps artifacts
+├── .sdlc/                       # Hidden orchestration state
+│   ├── context.json             # Shared by all agents
+│   ├── collaboration-log.json   # Real-time agent messages
+│   └── queue.json               # Agent spawn queue
 ```
 
 ### 2. Agent Spawning

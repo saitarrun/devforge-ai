@@ -216,7 +216,25 @@ async function run() {
   }
 
   console.log(`\n✅ All agents completed for run: ${runId}`);
-  console.log(`   Artifacts available at: .sdlc/${runId}/`);
+
+  // Read projectDir from context if available
+  try {
+    const contextPath = path.join(runDir, 'context.json');
+    if (fs.existsSync(contextPath)) {
+      const context = JSON.parse(fs.readFileSync(contextPath, 'utf-8'));
+      if (context.project && context.project.projectDir) {
+        console.log(`   📁 Project artifacts: ${context.project.projectDir}`);
+        console.log(`      - docs/ — all documentation`);
+        console.log(`      - frontend/ — frontend code`);
+        console.log(`      - backend/services/ — microservices`);
+        console.log(`      - deployment/ — DevOps artifacts`);
+      }
+    }
+  } catch (e) {
+    // Silently ignore if context unavailable
+  }
+
+  console.log(`   🔧 Orchestration state: .sdlc/${runId}/`);
 }
 
 run().catch(error => {

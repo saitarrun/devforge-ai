@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2026-06-17
+
+### ✨ Features
+
+#### Organized Project Directory Structure (Production-Ready)
+- **New**: Every SDLC run creates organized `./projects/<feature-name>/` with 4 subdirectories:
+  - **`docs/`** — All artifacts (requirements, architecture, threat model, test cases, SLOs, security audit, etc.)
+  - **`frontend/`** — Frontend application code with `src/components/`, `pages/`, `services/`
+  - **`backend/services/`** — Microservices architecture (api-gateway + domain services, each with own package.json + Dockerfile)
+  - **`deployment/`** — All DevOps artifacts (GitHub Actions, Docker, Kubernetes, Terraform/Helm)
+- **Microservices by default**: Backend always structured as microservices, ready for scaling
+- **No loose files**: Zero artifacts at project root — everything organized into subdirectories
+- **Agent output paths updated**: All 26 agents now write to organized paths
+  - Phase 1 agents write docs to `docs/`
+  - Frontend engineer writes to `frontend/src/`
+  - Backend engineer scaffolds and writes to `backend/services/`
+  - DevOps engineer writes to `deployment/`
+
+#### Node_modules Guard
+- **Safety**: Added guard to prevent running SDLC commands from inside node_modules
+- **Error message**: Clear guidance if user accidentally runs commands from wrong location
+
+#### Script Improvements
+- **sdlc-orchestrator.js**: Scaffolds full project directory structure on init
+- **orchestrator.js**: Added node_modules guard
+- **agent-executor.js**: Enhanced output to show both project artifacts and orchestration state
+
+### 🔄 Migration
+
+Upgrading from v1.3.0 → v1.3.3:
+1. Update plugin: `sudo npm install -g sdlc-ai-workflow@latest`
+2. No breaking changes — old `.projects/<feature-name>/` flat structure still works for legacy runs
+3. New runs automatically use organized structure
+4. To migrate old projects, manually organize files into `docs/`, `frontend/`, `backend/services/`, `deployment/` (optional)
+
 ## [1.3.0] - 2026-06-17
 
 ### ⚠️ BREAKING CHANGES

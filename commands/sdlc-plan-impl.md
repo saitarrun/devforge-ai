@@ -92,7 +92,7 @@ Spawned in sequence after grill-complete:
 After completion:
 
 ```
-./projects/<feature-name>/run-<timestamp>/
+./projects/<feature-name>/docs/
 ├── 01-grill-summary.md       (interview + confirmation)
 ├── 01-roadmap.md              (product vision, milestones)
 ├── 01-requirements.md          (user stories, AC)

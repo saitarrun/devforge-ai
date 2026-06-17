@@ -55,6 +55,13 @@ let projectDir = process.cwd();
 let port = 4242;
 let activeRunId = null;
 
+// Guard against running from inside node_modules
+if (process.cwd().includes('/node_modules/')) {
+  console.error('❌ Error: Do not run sdlc commands from inside node_modules.');
+  console.error('   Navigate to your project root first.');
+  process.exit(1);
+}
+
 for (let i = 2; i < process.argv.length; i++) {
   if (process.argv[i] === '--dir' && i + 1 < process.argv.length) {
     projectDir = path.resolve(process.argv[++i]);

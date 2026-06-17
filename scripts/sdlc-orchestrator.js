@@ -17,9 +17,24 @@ const readline = require('readline');
 
 class SDLCOrchestrator {
   constructor(featureDescription) {
+    // Guard against running from inside node_modules
+    if (process.cwd().includes('/node_modules/')) {
+      console.error('❌ Error: Do not run sdlc commands from inside node_modules.');
+      console.error('   Navigate to your project root first.');
+      process.exit(1);
+    }
+
     this.featureDescription = featureDescription;
     this.runId = `run-${new Date().toISOString().replace(/[:-]/g, '')}`;
     this.runDir = path.join(process.cwd(), '.sdlc', this.runId);
+
+    // Derive project directory from feature name (kebab-case, lowercase)
+    const projectName = featureDescription
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    this.projectDir = path.join(process.cwd(), 'projects', projectName);
+
     this.grilledContext = {};
     this.orchestratorHost = process.env.SDLC_HOST || '127.0.0.1';
     this.orchestratorPort = process.env.SDLC_PORT || 4242;
@@ -30,22 +45,42 @@ class SDLCOrchestrator {
   }
 
   /**
-   * Initialize run directory and orchestrator
+   * Initialize run directory, project directory, and orchestrator
    */
   async initialize() {
     console.log('\n🚀 SDLC Orchestrator Initializing');
     console.log(`   Run ID: ${this.runId}`);
     console.log(`   Feature: ${this.featureDescription}`);
+    console.log(`   Project: ${this.projectDir}`);
 
-    // Create run directory
+    // Create run directory for orchestration state
     if (!fs.existsSync(this.runDir)) {
       fs.mkdirSync(this.runDir, { recursive: true });
     }
+
+    // Create project directory structure
+    const dirs = [
+      path.join(this.projectDir, 'docs'),
+      path.join(this.projectDir, 'frontend', 'src', 'components'),
+      path.join(this.projectDir, 'frontend', 'src', 'pages'),
+      path.join(this.projectDir, 'frontend', 'src', 'services'),
+      path.join(this.projectDir, 'backend', 'services', 'api-gateway', 'src'),
+      path.join(this.projectDir, 'deployment', 'docker', 'Dockerfiles'),
+      path.join(this.projectDir, 'deployment', 'k8s'),
+      path.join(this.projectDir, 'deployment', '.github', 'workflows'),
+    ];
+
+    dirs.forEach(dir => {
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+    });
 
     // Initialize shared context
     const context = {
       project: {
         feature: this.featureDescription,
+        projectDir: this.projectDir,
         startedAt: new Date().toISOString(),
         phase: 1,
       },
@@ -69,7 +104,8 @@ class SDLCOrchestrator {
       JSON.stringify(log, null, 2)
     );
 
-    console.log(`   Directory: ${this.runDir}`);
+    console.log(`   Orchestration: ${this.runDir}`);
+    console.log(`   Project: ${this.projectDir}`);
     console.log('   ✓ Initialized\n');
   }
 
@@ -402,7 +438,7 @@ All subsequent agents will work from this shared understanding.
 `;
 
     fs.writeFileSync(
-      path.join(this.runDir, '01-grill-summary.md'),
+      path.join(this.projectDir, 'docs', '01-grill-summary.md'),
       summary
     );
 
