@@ -1,5 +1,5 @@
 ---
-name: skill-security-audit
+name: security-audit
 description: This skill should be used when the user mentions keywords related to security-audit.
 version: 1.0.0
 ---

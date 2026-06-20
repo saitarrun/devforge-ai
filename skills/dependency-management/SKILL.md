@@ -1,5 +1,5 @@
 ---
-name: skill-dependency-management
+name: dependency-management
 description: Version updates (major/minor/patch), security patch application, transitive dependency resolution, monorepo dependency management, deprecation tracking, license compliance. Use when updating dependencies, managing versions, or addressing CVEs.
 version: 1.0.0
 ---

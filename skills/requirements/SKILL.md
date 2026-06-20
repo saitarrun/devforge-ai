@@ -1,5 +1,5 @@
 ---
-name: skill-requirements
+name: requirements
 description: This skill should be used when the user asks to "write requirements", "create user stories", "define acceptance criteria", "decompose a feature", "analyze an issue", "write a PRD", "create user stories", "acceptance criteria", "roadmap", "feature spec", or discusses "INVEST" criteria, "ambiguity", or "story estimation".
 version: 1.0.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: skill-ux-design
+name: ux-design
 description: This skill should be used when the user mentions keywords related to ux-design.
 version: 1.0.0
 ---

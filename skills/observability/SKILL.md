@@ -1,5 +1,5 @@
 ---
-name: skill-observability
+name: observability
 description: Metrics, logging, distributed tracing, dashboards, alerting, SLO-driven observability, post-incident analysis. Use when designing monitoring, setting up dashboards, creating alert rules, or analyzing production data.
 version: 1.0.0
 ---

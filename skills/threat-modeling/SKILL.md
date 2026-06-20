@@ -1,5 +1,5 @@
 ---
-name: skill-threat-modeling
+name: threat-modeling
 description: This skill should be used when the user mentions keywords related to threat-modeling.
 version: 1.0.0
 ---

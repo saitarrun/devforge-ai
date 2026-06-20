@@ -1,5 +1,5 @@
 ---
-name: skill-performance-optimization
+name: performance-optimization
 description: Profile systems, identify bottlenecks, optimize code and infrastructure for speed, throughput, and resource efficiency.
 version: 1.0.0
 ---

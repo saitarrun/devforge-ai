@@ -1,5 +1,5 @@
 ---
-name: skill-architecture
+name: architecture
 description: This skill should be used when the user asks to "design a system", "architecture", "ADR", "system design", "tech stack", "choose between approaches", "coupling", "service granularity", "blueprint", "component design", "API contract", "schema design", "trade-offs", or discusses "monolith", "microservices", "fitness functions", or architectural decisions.
 version: 1.0.0
 ---

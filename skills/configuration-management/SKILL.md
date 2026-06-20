@@ -1,5 +1,5 @@
 ---
-name: skill-configuration-management
+name: configuration-management
 description: Secrets management, environment-specific configs, safe defaults, feature flags, configuration-as-code, compliance and audit trails. Use when managing secrets, configuring deployments, or implementing feature flags.
 version: 1.0.0
 ---

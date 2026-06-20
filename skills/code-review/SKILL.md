@@ -1,5 +1,5 @@
 ---
-name: skill-code-review
+name: code-review
 description: This skill should be used when the user mentions keywords related to code-review.
 version: 1.0.0
 ---

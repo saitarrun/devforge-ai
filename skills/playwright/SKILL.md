@@ -1,5 +1,5 @@
 ---
-name: skill-playwright
+name: playwright
 description: Browser automation and end-to-end testing with Playwright. Use when building/testing frontends, automating user workflows, taking screenshots, validating UI state, filling forms, testing across browsers, or mentions "playwright", "E2E test", "browser automation", "screenshot".
 version: 1.0.0
 ---

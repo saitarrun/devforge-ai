@@ -1,5 +1,5 @@
 ---
-name: skill-cloud-infra
+name: cloud-infra
 description: This skill should be used when the user mentions keywords related to cloud-infra.
 version: 1.0.0
 ---

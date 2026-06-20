@@ -1,5 +1,5 @@
 ---
-name: skill-api-design
+name: api-design
 description: REST/gRPC API design, versioning strategies, error codes, request/response contracts, backward compatibility, rate limiting, OpenAPI specifications. Use when designing APIs, defining contracts, planning versioning, or ensuring API consistency.
 version: 1.0.0
 ---

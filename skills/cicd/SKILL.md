@@ -1,5 +1,5 @@
 ---
-name: skill-cicd
+name: cicd
 description: This skill should be used when the user mentions keywords related to cicd.
 version: 1.0.0
 ---

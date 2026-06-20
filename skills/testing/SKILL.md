@@ -1,5 +1,5 @@
 ---
-name: skill-testing
+name: testing
 description: This skill should be used when the user mentions keywords related to testing.
 version: 1.0.0
 ---

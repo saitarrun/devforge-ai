@@ -1,5 +1,5 @@
 ---
-name: skill-documentation
+name: documentation
 description: This skill should be used when the user mentions keywords related to documentation.
 version: 1.0.0
 ---

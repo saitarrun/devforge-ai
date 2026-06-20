@@ -1,5 +1,5 @@
 ---
-name: skill-pr-review
+name: pr-review
 description: Comprehensive code review for pull requests using parallel multi-agent analysis. Audits CLAUDE.md compliance, checks for bugs, analyzes git history, reviews comments, and filters by confidence score. Use when reviewing a GitHub PR, mentions "code review", "review this PR", or "/code-review".
 version: 1.0.0
 allowed-tools: 

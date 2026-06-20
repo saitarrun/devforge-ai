@@ -1,5 +1,5 @@
 ---
-name: skill-ops-sre
+name: ops-sre
 description: This skill should be used when the user mentions keywords related to ops-sre.
 version: 1.0.0
 ---

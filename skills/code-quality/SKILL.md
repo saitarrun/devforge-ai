@@ -1,5 +1,5 @@
 ---
-name: skill-code-quality
+name: code-quality
 description: This skill should be used when implementing code quality standards, setting up linting/testing/security scans, enforcing coverage thresholds, or establishing CI/CD guardrails.
 version: 1.0.0
 ---

@@ -38,7 +38,7 @@ skill-name/
 
 ```md
 ---
-name: skill-name
+name: name
 description: Brief description of capability. Use when [specific triggers].
 ---
 

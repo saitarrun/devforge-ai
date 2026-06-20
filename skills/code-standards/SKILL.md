@@ -1,5 +1,5 @@
 ---
-name: skill-code-standards
+name: code-standards
 description: This skill should be used when the user mentions keywords related to code-standards.
 version: 1.0.0
 ---
