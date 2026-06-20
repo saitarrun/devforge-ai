@@ -2,7 +2,7 @@
 
 /**
  * SDLC Workflow Plugin CLI
- * Entry point for the globally installed `flowforge_ai` command.
+ * Entry point for the globally installed `sdlc-agent-kit` command.
  * Dispatches to the install/uninstall/validate scripts.
  */
 
@@ -23,8 +23,8 @@ function runScript(script) {
 }
 
 function printHelp() {
-  console.log(`flowforge_ai v${pkg.version}\n`);
-  console.log('Usage: flowforge_ai <command>\n');
+  console.log(`sdlc-agent-kit v${pkg.version}\n`);
+  console.log('Usage: sdlc-agent-kit <command>\n');
   console.log('Commands:');
   console.log('  install     Copy agents, skills, and commands into ~/.claude/');
   console.log('  uninstall   Remove the plugin from ~/.claude/');

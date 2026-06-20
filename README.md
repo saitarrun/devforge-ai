@@ -1,32 +1,32 @@
 <p>
-  <a href="https://github.com/saitarrun/FlowForge_ai">
-    <img alt="FlowForge_AI" src="https://img.shields.io/badge/FlowForge__AI-Agentic%20SDLC%20Workflow-111827?style=for-the-badge&logo=github&logoColor=white" width="369">
+  <a href="https://github.com/saitarrun/sdlc-agent-kit">
+    <img alt="SDLC Agent Kit" src="https://img.shields.io/badge/FlowForge__AI-Agentic%20SDLC%20Workflow-111827?style=for-the-badge&logo=github&logoColor=white" width="369">
   </a>
 </p>
 
-# FlowForge_AI
+# SDLC Agent Kit
 
-[![npm version](https://img.shields.io/npm/v/%40saitarrunpitta%2Fflowforge_ai?style=flat-square&color=blue)](https://www.npmjs.com/package/@saitarrunpitta/flowforge_ai)
+[![npm version](https://img.shields.io/npm/v/%40saitarrunpitta%2Fsdlc-agent-kit?style=flat-square&color=blue)](https://www.npmjs.com/package/sdlc-agent-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js->=18.0.0-green?style=flat-square&logo=node.js)](https://nodejs.org/)
-[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/FlowForge_ai)
+[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/sdlc-agent-kit)
 
-Agentic SDLC orchestration for Claude Code. FlowForge_AI turns an idea into a planned, built, verified, shipped, and operated feature using role-specific agents, tracer bullet slices, quality gates, and handoff documents.
+Agentic SDLC orchestration for Claude Code. SDLC Agent Kit turns an idea into a planned, built, verified, shipped, and operated feature using role-specific agents, tracer bullet slices, quality gates, and handoff documents.
 
-This is not a one-shot code generator. FlowForge_AI is a delivery workflow: product thinking first, thin vertical slices, feedback loops, security and performance checks, deployment assets, and operational follow-through.
+This is not a one-shot code generator. SDLC Agent Kit is a delivery workflow: product thinking first, thin vertical slices, feedback loops, security and performance checks, deployment assets, and operational follow-through.
 
 ## Quickstart
 
 1. Install the package:
 
 ```bash
-sudo npm install -g @saitarrunpitta/flowforge_ai
+sudo npm install -g sdlc-agent-kit
 ```
 
-2. Install the FlowForge_AI agents, skills, commands, and integrations into Claude Code:
+2. Install the SDLC Agent Kit agents, skills, commands, and integrations into Claude Code:
 
 ```bash
-flowforge_ai install
+sdlc-agent-kit install
 ```
 
 3. Restart Claude Code, then run the full pipeline:
@@ -48,23 +48,23 @@ flowforge_ai install
 ## Install From Source
 
 ```bash
-git clone https://github.com/saitarrun/FlowForge_ai
-cd FlowForge_ai
+git clone https://github.com/saitarrun/sdlc-agent-kit
+cd sdlc-agent-kit
 npm install
 npm run install-local
 ```
 
 Restart Claude Code after installing. See [INSTALLATION.md](INSTALLATION.md) for update, symlink, and uninstall instructions.
 
-## Why FlowForge_AI Exists
+## Why SDLC Agent Kit Exists
 
-FlowForge_AI is built around the common places AI-assisted engineering breaks down.
+SDLC Agent Kit is built around the common places AI-assisted engineering breaks down.
 
 ### 1. The Agent Builds The Wrong Thing
 
 The first failure mode is misalignment. A feature request sounds obvious until the agent fills in the wrong blanks.
 
-FlowForge_AI starts with `/sdlc-plan`, where the `product-manager` agent runs a structured interview, writes `grill-summary.md`, produces `scope.json`, synthesizes a PRD, and creates implementation issues. The result is a concrete build plan before any code is written.
+SDLC Agent Kit starts with `/sdlc-plan`, where the `product-manager` agent runs a structured interview, writes `grill-summary.md`, produces `scope.json`, synthesizes a PRD, and creates implementation issues. The result is a concrete build plan before any code is written.
 
 Use this when:
 
@@ -75,7 +75,7 @@ Use this when:
 
 ### 2. The Work Is Too Big To Trust
 
-Large agent tasks fail because the feedback loop is too slow. FlowForge_AI breaks features into tracer bullet slices: thin increments that cut through schema, API, UI, and tests where needed.
+Large agent tasks fail because the feedback loop is too slow. SDLC Agent Kit breaks features into tracer bullet slices: thin increments that cut through schema, API, UI, and tests where needed.
 
 Each slice is tracked in `scope.json`:
 
@@ -106,7 +106,7 @@ The first slice establishes the foundation. Every later slice delivers one user-
 
 ### 3. The Code Does Not Work
 
-FlowForge_AI uses the Ralph Loop during build work:
+SDLC Agent Kit uses the Ralph Loop during build work:
 
 - Implement one slice
 - Run the relevant type checks and tests
@@ -118,7 +118,7 @@ This gives the agent a disciplined feedback loop instead of relying on confidenc
 
 ### 4. The Process Loses Context
 
-Long SDLC sessions can drown the model in stale conversation history. FlowForge_AI uses handoff documents at phase gates:
+Long SDLC sessions can drown the model in stale conversation history. SDLC Agent Kit uses handoff documents at phase gates:
 
 ```text
 plan-handoff.md   -> /sdlc-build
@@ -131,7 +131,7 @@ Each phase reads the handoff first, then starts with bounded context. Decisions 
 
 ### 5. Shipping Is Not The End
 
-FlowForge_AI includes verification, deployment, and operations phases. The workflow does not stop when code compiles.
+SDLC Agent Kit includes verification, deployment, and operations phases. The workflow does not stop when code compiles.
 
 The later phases cover:
 
@@ -183,7 +183,7 @@ Every SDLC run writes into a project folder:
 
 ## Reference
 
-FlowForge_AI is split into commands, agents, and skills.
+SDLC Agent Kit is split into commands, agents, and skills.
 
 Commands are what you type. Agents are the role-specific workers. Skills are methodology documents that agents load when their task needs that discipline.
 
@@ -215,7 +215,7 @@ Commands are what you type. Agents are the role-specific workers. Skills are met
 
 ### Core Skills
 
-These are the skills most central to the FlowForge_AI pipeline:
+These are the skills most central to the SDLC Agent Kit pipeline:
 
 - **[`grill-me`](./skills/grill-me/SKILL.md)** - Structured interrogation before planning.
 - **[`requirements`](./skills/requirements/SKILL.md)** - User stories, acceptance criteria, ambiguity checks, and INVEST-style decomposition.

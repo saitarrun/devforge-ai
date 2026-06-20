@@ -13,7 +13,7 @@ const path = require('path');
 const PLUGIN_DIR = path.join(__dirname, '..');
 const CLAUDE_HOME = path.join(process.env.HOME || process.env.USERPROFILE, '.claude');
 
-console.log('📦 Installing FlowForge_AI Plugin...\n');
+console.log('📦 Installing SDLC Agent Kit Plugin...\n');
 
 if (!fs.existsSync(CLAUDE_HOME)) {
   fs.mkdirSync(CLAUDE_HOME, { recursive: true });
@@ -44,13 +44,13 @@ function replaceDir(src, dest, label) {
 // Agents and commands are namespaced under their own subdirectory.
 replaceDir(
   path.join(PLUGIN_DIR, 'agents'),
-  path.join(CLAUDE_HOME, 'agents', 'flowforge_ai'),
-  'agents → agents/flowforge_ai',
+  path.join(CLAUDE_HOME, 'agents', 'sdlc-agent-kit'),
+  'agents → agents/sdlc-agent-kit',
 );
 replaceDir(
   path.join(PLUGIN_DIR, 'commands'),
-  path.join(CLAUDE_HOME, 'commands', 'flowforge_ai'),
-  'commands → commands/flowforge_ai',
+  path.join(CLAUDE_HOME, 'commands', 'sdlc-agent-kit'),
+  'commands → commands/sdlc-agent-kit',
 );
 
 // Skills are copied one directory at a time so we only touch our own skills.
@@ -75,7 +75,7 @@ if (fs.existsSync(integrationsSrc)) {
   );
 }
 
-console.log('\n✅ FlowForge_AI plugin installed successfully!\n');
+console.log('\n✅ SDLC Agent Kit plugin installed successfully!\n');
 console.log('Available commands:');
 console.log('  /sdlc                    Master orchestrator (all 6 phases)');
 console.log('  /sdlc-plan               Phase 1: Planning & requirements');
