@@ -1,46 +1,51 @@
+<p>
+  <a href="https://github.com/saitarrun/FlowForge">
+    <img alt="FlowForge" src="https://img.shields.io/badge/FlowForge-Agentic%20SDLC%20Workflow-111827?style=for-the-badge&logo=github&logoColor=white" width="369">
+  </a>
+</p>
+
 # FlowForge
 
-[![npm version](https://img.shields.io/npm/v/flowforge?style=flat-square&color=blue)](https://www.npmjs.com/package/flowforge)
+[![npm version](https://img.shields.io/npm/v/%40saitarrunpitta%2Fflowforge?style=flat-square&color=blue)](https://www.npmjs.com/package/@saitarrunpitta/flowforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
-[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/FlowForge)
 [![Node.js](https://img.shields.io/badge/Node.js->=18.0.0-green?style=flat-square&logo=node.js)](https://nodejs.org/)
+[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/FlowForge)
 
-**FlowForge is AI-powered tracer bullet SDLC orchestration** — 10 agents across 5 phases with Ralph Loop self-correction, Linear issue integration, and handoff-bounded context windows.
+Agentic SDLC orchestration for Claude Code. FlowForge turns an idea into a planned, built, verified, shipped, and operated feature using role-specific agents, tracer bullet slices, quality gates, and handoff documents.
 
-**Built for**: Claude Code users who want end-to-end feature delivery from interview to production.
+This is not a one-shot code generator. FlowForge is a delivery workflow: product thinking first, thin vertical slices, feedback loops, security and performance checks, deployment assets, and operational follow-through.
 
-## Quick Start
+## Quickstart
+
+1. Install the package:
 
 ```bash
-# Full pipeline
-/sdlc "build a login page"
-
-# Phase by phase
-/sdlc-plan "add OAuth login"        # Interview → scope.json → PRD → Linear issues
-/sdlc-build                         # UX → slices → QA with Ralph Loop
-/sdlc-verify                        # Security + performance audit
-/sdlc-ship                          # CI/CD + cloud infra
-/sdlc-operate                       # SLOs + runbooks + security monitoring
-
-# Utilities
-/sdlc-implement SAI-42              # Implement a single Linear issue
-/to-prd "login-page"                # Re-synthesize PRD from existing grill-summary
-/to-issues "login-page"             # (Re)create Linear issues from scope.json slices
-/sdlc-review --pr 1                 # PR review with code-review-graph
+sudo npm install -g @saitarrunpitta/flowforge
 ```
 
-## Installation
-
-### Option A: Global NPM (Recommended)
+2. Install the FlowForge agents, skills, commands, and integrations into Claude Code:
 
 ```bash
-sudo npm install -g flowforge
 flowforge install
 ```
 
-Restart Claude Code. Done!
+3. Restart Claude Code, then run the full pipeline:
 
-### Option B: Install from Source
+```bash
+/sdlc "build a login page"
+```
+
+4. Or run one phase at a time:
+
+```bash
+/sdlc-plan "add OAuth login"
+/sdlc-build
+/sdlc-verify
+/sdlc-ship
+/sdlc-operate
+```
+
+## Install From Source
 
 ```bash
 git clone https://github.com/saitarrun/FlowForge
@@ -49,225 +54,246 @@ npm install
 npm run install-local
 ```
 
-Restart Claude Code.
+Restart Claude Code after installing. See [INSTALLATION.md](INSTALLATION.md) for update, symlink, and uninstall instructions.
 
-See [INSTALLATION.md](INSTALLATION.md) for update procedures, symlink mode, and uninstall.
+## Why FlowForge Exists
 
----
+FlowForge is built around the common places AI-assisted engineering breaks down.
 
-## How it Works
+### 1. The Agent Builds The Wrong Thing
 
-### Tracer Bullet Slices
+The first failure mode is misalignment. A feature request sounds obvious until the agent fills in the wrong blanks.
 
-Every feature is decomposed into vertical slices — each slice delivers a thin end-to-end increment (schema + api + ui + tests). `scope.json` is the single source of truth:
+FlowForge starts with `/sdlc-plan`, where the `product-manager` agent runs a structured interview, writes `grill-summary.md`, produces `scope.json`, synthesizes a PRD, and creates implementation issues. The result is a concrete build plan before any code is written.
+
+Use this when:
+
+- The idea is still fuzzy
+- You need user stories and acceptance criteria
+- You want vertical slices instead of a giant implementation blob
+- You want requirements captured as artifacts, not lost in chat history
+
+### 2. The Work Is Too Big To Trust
+
+Large agent tasks fail because the feedback loop is too slow. FlowForge breaks features into tracer bullet slices: thin increments that cut through schema, API, UI, and tests where needed.
+
+Each slice is tracked in `scope.json`:
 
 ```json
 {
-  "capability_flags": { "has_ui": true, "has_auth": true },
+  "capability_flags": {
+    "has_ui": true,
+    "has_auth": true
+  },
   "slices": [
-    { "id": "slice-0", "name": "Project scaffold + health check", "type": "prefactor", "layers": ["schema", "api", "tests"], "linear_id": "SAI-52" },
-    { "id": "slice-1", "name": "User can log in",                 "type": "feature",   "layers": ["schema", "api", "ui", "tests"], "linear_id": "SAI-53" }
+    {
+      "id": "slice-0",
+      "name": "Project scaffold + health check",
+      "type": "prefactor",
+      "layers": ["schema", "api", "tests"]
+    },
+    {
+      "id": "slice-1",
+      "name": "User can log in",
+      "type": "feature",
+      "layers": ["schema", "api", "ui", "tests"]
+    }
   ]
 }
 ```
 
-### Ralph Loop
+The first slice establishes the foundation. Every later slice delivers one user-visible increment and appends its result to `implementation-log.md`.
 
-Every slice goes through a self-correcting loop before marking done:
+### 3. The Code Does Not Work
 
-- **Inner loop**: execute → verify (typecheck + slice tests) → pass: append to `implementation-log.md` → fail: retry with fresh context (max 2 retries) → circuit breaker
-- **Outer loop**: qa-engineer E2E → flag failures → targeted slice retry (max 1) → circuit breaker
-- **Sentinels**: context drift check + spec drift check before any gate
+FlowForge uses the Ralph Loop during build work:
 
-### Handoff Mechanism
+- Implement one slice
+- Run the relevant type checks and tests
+- Retry with fresh context when verification fails
+- Stop at a circuit breaker instead of looping silently
+- Run cross-slice QA after feature slices are complete
 
-Each phase gate writes a handoff document. The next phase reads it as its first action — keeping every phase's context window bounded regardless of how many slices or retries the Build phase produced.
+This gives the agent a disciplined feedback loop instead of relying on confidence.
 
+### 4. The Process Loses Context
+
+Long SDLC sessions can drown the model in stale conversation history. FlowForge uses handoff documents at phase gates:
+
+```text
+plan-handoff.md   -> /sdlc-build
+build-handoff.md  -> /sdlc-verify
+verify-handoff.md -> /sdlc-ship
+ship-handoff.md   -> /sdlc-operate
 ```
-plan-handoff.md → sdlc-build
-build-handoff.md → sdlc-verify
-verify-handoff.md → sdlc-ship
-ship-handoff.md → sdlc-operate
-```
 
----
+Each phase reads the handoff first, then starts with bounded context. Decisions survive, but unnecessary chat history does not.
 
-## Phases
+### 5. Shipping Is Not The End
 
-| Phase | Command | Agents | Output |
-|-------|---------|--------|--------|
-| **Plan** | `/sdlc-plan` | product-manager | `grill-summary.md`, `scope.json`, `01-prd.md`, Linear issues |
-| **Build** | `/sdlc-build` | ux-designer¹, fullstack-engineer × slices, qa-engineer | `implementation-log.md`, `build-handoff.md` |
-| **Verify** | `/sdlc-verify` | security-engineer, performance-engineer² | security findings, perf report, `verify-handoff.md` |
-| **Ship** | `/sdlc-ship` | devops-engineer | CI/CD pipeline, Dockerfile, Terraform IaC, `ship-handoff.md` |
-| **Operate** | `/sdlc-operate` | sre-engineer, data-engineer³ | `06-slo.md`, runbooks, monitoring setup |
+FlowForge includes verification, deployment, and operations phases. The workflow does not stop when code compiles.
 
-¹ Only when `has_ui: true`  
-² Only when `needs_performance_audit: true`  
-³ Only when `has_data_pipeline: true`
+The later phases cover:
 
----
+- Security review and OWASP checks
+- Performance profiling when required
+- CI/CD, Docker, Kubernetes, and infrastructure artifacts
+- SLOs, monitoring, runbooks, and operational readiness
+- Data pipeline planning when the feature needs it
 
-## Agents (10)
+## How The Pipeline Works
 
-**Plan**
-- `product-manager` — Grill-me interview, slice decomposition, scope.json
+| Phase | Command | Primary agents | Output |
+| --- | --- | --- | --- |
+| Plan | `/sdlc-plan` | `product-manager` | `grill-summary.md`, `scope.json`, `01-prd.md`, issues |
+| Build | `/sdlc-build` | `ux-designer`, `fullstack-engineer`, `qa-engineer` | `ux-design.md`, code, tests, `implementation-log.md` |
+| Verify | `/sdlc-verify` | `security-engineer`, `performance-engineer` | security and performance reports |
+| Ship | `/sdlc-ship` | `devops-engineer` | CI/CD, Docker, Kubernetes, IaC, release notes |
+| Operate | `/sdlc-operate` | `sre-engineer`, `data-engineer` | SLOs, runbooks, monitoring, data pipeline docs |
 
-**Build**
-- `ux-designer` — UX design (merged ux-researcher + ui-ux-designer); conditional on `has_ui`
-- `fullstack-engineer` — Tracer bullet slice implementation; reads/appends `implementation-log.md`
-- `qa-engineer` — Post-slice E2E test run (merged qa-manual-tester + automation-qa-engineer)
+Some agents are scope-gated:
 
-**Verify**
-- `security-engineer` — SAST + OWASP always-on, pentest conditional on `needs_pentest` (merged appsec-engineer + penetration-tester)
-- `performance-engineer` — Profiling, benchmarking, perf budgets
+- `ux-designer` runs when `has_ui` is true
+- `performance-engineer` runs when `needs_performance_audit` is true
+- `data-engineer` runs when `has_data_pipeline` is true
+- Security monitoring is added when `has_auth` is true
 
-**Ship**
-- `devops-engineer` — CI/CD, Dockerfile, cloud IaC, semantic releases (merged cloud-engineer + release-manager)
+## Project Artifacts
 
-**Operate**
-- `sre-engineer` — SLOs, runbooks, security monitoring on `has_auth` (merged secops-analyst)
-- `data-engineer` — ETL/ELT pipelines; conditional on `has_data_pipeline`
+Every SDLC run writes into a project folder:
 
-**Cross-cutting**
-- `technical-writer` — API docs, SDK guides, developer experience
-
----
-
-## Skills (34)
-
-Skills inject methodology into agents — pure knowledge context, no tools, no model.
-
-| Skill | Used by |
-|-------|---------|
-| `grill-me` | product-manager |
-| `requirements` | product-manager |
-| `prd-synthesis` | product-manager |
-| `ralph-loop` | sdlc-build, sdlc-implement |
-| `ux-design` | ux-designer |
-| `prototype` | ux-designer |
-| `code-standards` | fullstack-engineer |
-| `architecture` | fullstack-engineer |
-| `architecture-refactor` | fullstack-engineer |
-| `zoom-out` | fullstack-engineer |
-| `tdd` | fullstack-engineer, qa-engineer |
-| `testing` | qa-engineer |
-| `playwright` | qa-engineer |
-| `code-quality` | qa-engineer, security-engineer, devops-engineer, sre-engineer |
-| `security-audit` | security-engineer, sre-engineer |
-| `threat-modeling` | security-engineer |
-| `performance-optimization` | performance-engineer |
-| `observability` | performance-engineer, sre-engineer |
-| `cicd` | devops-engineer |
-| `precommit-hooks` | devops-engineer |
-| `cloud-infra` | devops-engineer |
-| `git-safety` | devops-engineer |
-| `ops-sre` | sre-engineer |
-| `documentation` | technical-writer |
-| `api-design` | technical-writer |
-| `code-review` | sdlc-review |
-| `pr-review` | sdlc-review |
-| `handoff` | all phase gates |
-| `plan-breakdown` | sdlc-plan |
-| `issue-triage` | sdlc-plan |
-| `diagnose` | debugging sessions |
-| `dependency-management` | devops-engineer |
-| `configuration-management` | devops-engineer |
-| `write-skill` | skill authoring |
-
----
-
-## Project Directory Structure
-
-Every SDLC run creates an organized project directory:
-
-```
+```text
 ./projects/<feature-name>/
-├── grill-summary.md          ← Product Manager interview transcript
-├── scope.json                ← Capability flags + tracer bullet slices (with linear_id)
-├── docs/
-│   ├── 01-prd.md             ← Product Requirements Document
-│   ├── implementation-log.md ← Per-slice build log (appended by fullstack-engineer)
-│   └── 06-slo.md             ← SLOs, error budgets, runbooks
-└── handoffs/
-    ├── plan-handoff.md
-    ├── build-handoff.md
-    ├── verify-handoff.md
-    └── ship-handoff.md
+  grill-summary.md
+  scope.json
+  docs/
+    01-prd.md
+    ux-design.md
+    implementation-log.md
+    security-report.md
+    performance-report.md
+    05-pipeline.log
+    06-slo.md
+  handoffs/
+    plan-handoff.md
+    build-handoff.md
+    verify-handoff.md
+    ship-handoff.md
 ```
 
----
+## Reference
 
-## Extending
+FlowForge is split into commands, agents, and skills.
 
-### New agent
+Commands are what you type. Agents are the role-specific workers. Skills are methodology documents that agents load when their task needs that discipline.
 
-Create `agents/new-agent-name.md` with frontmatter:
+### Commands
 
-```yaml
----
-name: new-agent-name
-description: When to invoke this agent...
-tools: Read, Bash, Write
-model: haiku|sonnet|opus
-skills: skill-a, skill-b
----
-```
+- **[`/sdlc`](./commands/sdlc.md)** - Master orchestrator for the full Plan -> Build -> Verify -> Ship -> Operate pipeline.
+- **[`/sdlc-plan`](./commands/sdlc-plan.md)** - Product planning, interview, PRD, scope, and issues.
+- **[`/sdlc-build`](./commands/sdlc-build.md)** - UX design, slice implementation, Ralph Loop retries, and QA.
+- **[`/sdlc-verify`](./commands/sdlc-verify.md)** - Security and performance verification.
+- **[`/sdlc-ship`](./commands/sdlc-ship.md)** - CI/CD, cloud infrastructure, containerization, and release.
+- **[`/sdlc-operate`](./commands/sdlc-operate.md)** - SLOs, runbooks, monitoring, and data pipelines.
+- **[`/sdlc-implement`](./commands/sdlc-implement.md)** - Standalone issue or free-form implementation with Ralph Loop verification.
+- **[`/sdlc-review`](./commands/sdlc-review.md)** - Pull request review using parallel reviewer perspectives.
+- **[`/to-prd`](./commands/to-prd.md)** - Regenerate a PRD from existing planning artifacts.
+- **[`/to-issues`](./commands/to-issues.md)** - Create one issue per tracer bullet slice from `scope.json`.
 
-Wire into the relevant command or `/sdlc`.
+### Agents
 
-### New skill
+- **[`product-manager`](./agents/product-manager.md)** - Runs the planning interview, decomposes features, writes `scope.json`, and drives PRD and issue creation.
+- **[`ux-designer`](./agents/ux-designer.md)** - Produces wireframes, design tokens, component specs, and interaction states when the feature has UI.
+- **[`fullstack-engineer`](./agents/fullstack-engineer.md)** - Implements vertical slices across schema, API, UI, and tests.
+- **[`qa-engineer`](./agents/qa-engineer.md)** - Writes and runs cross-slice E2E tests after implementation.
+- **[`security-engineer`](./agents/security-engineer.md)** - Performs SAST, OWASP, dependency scanning, and pentest work when required.
+- **[`performance-engineer`](./agents/performance-engineer.md)** - Profiles bottlenecks, validates performance budgets, and recommends optimizations.
+- **[`devops-engineer`](./agents/devops-engineer.md)** - Builds CI/CD, Docker, Kubernetes, Terraform, and release procedures.
+- **[`sre-engineer`](./agents/sre-engineer.md)** - Defines SLOs, dashboards, alerts, runbooks, and security operations.
+- **[`data-engineer`](./agents/data-engineer.md)** - Designs ETL/ELT pipelines, analytics schemas, schedules, and data quality checks.
+- **[`technical-writer`](./agents/technical-writer.md)** - Produces API docs, guides, tutorials, and developer-facing documentation.
 
-Create `skills/skill-name/SKILL.md`:
+### Core Skills
 
-```yaml
----
-name: skill-name
-description: Brief description. Use when...
-version: 1.0.0
----
-```
+These are the skills most central to the FlowForge pipeline:
 
-Add to agent `skills:` frontmatter field.
+- **[`grill-me`](./skills/grill-me/SKILL.md)** - Structured interrogation before planning.
+- **[`requirements`](./skills/requirements/SKILL.md)** - User stories, acceptance criteria, ambiguity checks, and INVEST-style decomposition.
+- **[`prd-synthesis`](./skills/prd-synthesis/SKILL.md)** - Converts context into product requirements.
+- **[`to-prd`](./skills/to-prd/SKILL.md)** - Synthesizes PRDs from current context and planning artifacts.
+- **[`to-issues`](./skills/to-issues/SKILL.md)** - Converts plans into independently-grabbable issues.
+- **[`plan-breakdown`](./skills/plan-breakdown/SKILL.md)** - Breaks work into implementation slices.
+- **[`ralph-loop`](./skills/ralph-loop/SKILL.md)** - Self-correcting build loop with retries and circuit breakers.
+- **[`handoff`](./skills/handoff/SKILL.md)** - Compacts phase context into handoff documents.
+- **[`ux-design`](./skills/ux-design/SKILL.md)** - UX design discipline for UI-bearing features.
+- **[`prototype`](./skills/prototype/SKILL.md)** - Throwaway prototypes for UI or state-model exploration.
+- **[`tdd`](./skills/tdd/SKILL.md)** - Red-green-refactor test-driven development.
+- **[`testing`](./skills/testing/SKILL.md)** - Test strategy and coverage discipline.
+- **[`playwright`](./skills/playwright/SKILL.md)** - Browser automation and E2E testing.
 
-### New command
+### Engineering Skills
 
-Create `commands/sdlc-phase-name.md` or edit `commands/sdlc.md`. Wire into `/sdlc` orchestrator.
+- **[`architecture`](./skills/architecture/SKILL.md)** - System design, ADRs, coupling, service boundaries, and tradeoffs.
+- **[`architecture-refactor`](./skills/architecture-refactor/SKILL.md)** - Finds architecture improvement opportunities.
+- **[`api-design`](./skills/api-design/SKILL.md)** - API contracts, OpenAPI, versioning, error design, and compatibility.
+- **[`code-quality`](./skills/code-quality/SKILL.md)** - Linting, tests, coverage, security checks, and CI guardrails.
+- **[`code-standards`](./skills/code-standards/SKILL.md)** - Naming, structure, maintainability, and implementation conventions.
+- **[`code-review`](./skills/code-review/SKILL.md)** - Review discipline for correctness and maintainability.
+- **[`pr-review`](./skills/pr-review/SKILL.md)** - Pull request review patterns.
+- **[`diagnose`](./skills/diagnose/SKILL.md)** - Reproduce, minimize, hypothesize, instrument, fix, and regression-test.
+- **[`zoom-out`](./skills/zoom-out/SKILL.md)** - Higher-level context when the codebase shape is unclear.
+- **[`dependency-management`](./skills/dependency-management/SKILL.md)** - Version updates, CVEs, licenses, and transitive dependencies.
+- **[`configuration-management`](./skills/configuration-management/SKILL.md)** - Secrets, environment config, feature flags, and auditability.
+- **[`documentation`](./skills/documentation/SKILL.md)** - Docs-as-code, examples, tutorials, and API docs.
+- **[`write-skill`](./skills/write-skill/SKILL.md)** - Guidance for authoring new skills.
 
----
+### Security, Delivery, And Operations Skills
 
-## Validate
+- **[`security-audit`](./skills/security-audit/SKILL.md)** - Security review, OWASP checks, and vulnerability scanning.
+- **[`threat-modeling`](./skills/threat-modeling/SKILL.md)** - STRIDE and attack-surface analysis.
+- **[`performance-optimization`](./skills/performance-optimization/SKILL.md)** - Profiling, benchmarking, and performance budgets.
+- **[`observability`](./skills/observability/SKILL.md)** - Metrics, logs, traces, dashboards, alerts, and SLOs.
+- **[`cicd`](./skills/cicd/SKILL.md)** - CI/CD pipeline design.
+- **[`cloud-infra`](./skills/cloud-infra/SKILL.md)** - Cloud infrastructure, networking, compute, and managed services.
+- **[`precommit-hooks`](./skills/precommit-hooks/SKILL.md)** - Husky, lint-staged, formatting, type checks, and test hooks.
+- **[`git-safety`](./skills/git-safety/SKILL.md)** - Git guardrails for destructive commands.
+- **[`ops-sre`](./skills/ops-sre/SKILL.md)** - SRE practices, runbooks, incidents, and reliability operations.
+- **[`issue-triage`](./skills/issue-triage/SKILL.md)** - Issue workflow and triage state management.
+
+## Development
+
+Validate the plugin structure:
 
 ```bash
-make validate
+npm run validate
 ```
 
-## Uninstall
+Install locally while developing:
 
 ```bash
-make uninstall
+npm run install-local
 ```
 
-## Update
+Uninstall local files:
 
 ```bash
-sudo npm install -g flowforge@latest
-flowforge install
+npm run uninstall
 ```
 
----
+Check the npm package contents:
 
-## Built on Best Practices
+```bash
+npm pack --dry-run
+```
 
-- **Pragmatic Programmer** — Tracer bullets, DRY, ETC, no broken windows
-- **Clean Code** — Meaningful names, small functions, F.I.R.S.T. tests, SOLID
-- **Architecture: The Hard Parts** — ADR, coupling/cohesion, fitness functions
-- **Google SRE** — SLO/SLI, error budgets, blameless postmortems, toil elimination
-- **OWASP** — SAST, CVE scanning, threat modeling (STRIDE/PASTA)
+## Built On
 
-## Contributing
-
-Follow the patterns in [CLAUDE.md](./CLAUDE.md).
+- Tracer bullet development
+- Red-green-refactor feedback loops
+- Handoff-bounded context windows
+- Product requirements before implementation
+- Security and performance checks before shipping
+- SLO-driven operations after release
 
 ## License
 
