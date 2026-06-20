@@ -1,5 +1,5 @@
 {
-  "name": "sdlc-agent-kit",
+  "name": "sdlc-ai-automation",
   "version": "2.0.2",
   "description": "A multi-agent SDLC toolkit for Claude Code: 10 agents, 36 skills, 10 commands, 5 phases. Plan → Build → Verify → Ship → Operate with Ralph Loop self-correction and Linear issue integration.",
   "keywords": [
@@ -40,13 +40,13 @@
     "automation",
     "agents"
   ],
-  "homepage": "https://github.com/saitarrun/sdlc-agent-kit",
+  "homepage": "https://github.com/saitarrun/sdlc-ai-automation",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saitarrun/sdlc-agent-kit.git"
+    "url": "git+https://github.com/saitarrun/sdlc-ai-automation.git"
   },
   "bugs": {
-    "url": "https://github.com/saitarrun/sdlc-agent-kit/issues"
+    "url": "https://github.com/saitarrun/sdlc-ai-automation/issues"
   },
   "author": {
     "name": "saitarrun",
@@ -75,7 +75,7 @@
     "test": "echo 'Plugin tests would run here' && exit 0"
   },
   "bin": {
-    "sdlc-agent-kit": "scripts/cli.js"
+    "sdlc-ai-automation": "scripts/cli.js"
   },
   "claude": {
     "type": "plugin",

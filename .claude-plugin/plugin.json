@@ -1,5 +1,5 @@
 {
-  "name": "sdlc-agent-kit",
+  "name": "sdlc-ai-automation",
   "version": "2.0.2",
   "description": "Tracer bullet SDLC plugin: 10 agents across 5 phases (plan, build, verify, ship, operate), 34 knowledge skills, 10 commands. Ralph Loop self-correction, Linear issue integration, scope.json as single source of truth.",
   "keywords": [
@@ -14,10 +14,10 @@
     "tracer-bullet",
     "ralph-loop"
   ],
-  "homepage": "https://github.com/saitarrun/sdlc-agent-kit",
+  "homepage": "https://github.com/saitarrun/sdlc-ai-automation",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saitarrun/sdlc-agent-kit"
+    "url": "https://github.com/saitarrun/sdlc-ai-automation"
   },
   "author": {
     "name": "saitarrun",

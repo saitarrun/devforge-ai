@@ -44,13 +44,13 @@ function replaceDir(src, dest, label) {
 // Agents and commands are namespaced under their own subdirectory.
 replaceDir(
   path.join(PLUGIN_DIR, 'agents'),
-  path.join(CLAUDE_HOME, 'agents', 'sdlc-agent-kit'),
-  'agents → agents/sdlc-agent-kit',
+  path.join(CLAUDE_HOME, 'agents', 'sdlc-ai-automation'),
+  'agents → agents/sdlc-ai-automation',
 );
 replaceDir(
   path.join(PLUGIN_DIR, 'commands'),
-  path.join(CLAUDE_HOME, 'commands', 'sdlc-agent-kit'),
-  'commands → commands/sdlc-agent-kit',
+  path.join(CLAUDE_HOME, 'commands', 'sdlc-ai-automation'),
+  'commands → commands/sdlc-ai-automation',
 );
 
 // Skills are copied one directory at a time so we only touch our own skills.
