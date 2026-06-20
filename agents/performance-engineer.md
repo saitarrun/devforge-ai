@@ -4,7 +4,7 @@ description: Profiles systems, identifies bottlenecks, optimizes code and infras
 tools: Read, Bash, Glob, Grep, WebFetch
 model: haiku
 color: orange
-skills: skill-performance-optimization, skill-code-quality, skill-observability
+skills: performance-optimization, code-quality, observability
 ---
 
 # Performance Engineer Agent

@@ -1,342 +1,162 @@
 ---
-description: Phase 1 planning — grill-me interview + 4 sequential agents (product-manager → business-analyst → software-architect → security-architect)
+description: Phase 1 — Plan. Runs product-manager grill-me interview + slice decomposition, then publishes PRD and creates issues. Invokes exactly 1 agent.
 argument-hint: <feature-description>
 tools: Agent, AskUserQuestion
 model: sonnet
 ---
 
-# /sdlc-plan — Phase 1: Planning
+# /sdlc-plan — Phase 1: Plan
 
-Conduct mandatory grill-me interview, then spawn 4 Phase 1 agents sequentially to produce roadmap, requirements, architecture, and threat model.
+Conduct the grill-me interview, emit `grill-summary.md` + `scope.json`, publish a PRD, and create one issue per slice. Uses exactly **1 agent**: `product-manager`.
 
-## How This Works
+## Usage
 
-1. **Interview** — Ask 32 questions one-at-a-time across 8 sections
-2. **Save** — Document all answers in `./projects/<feature-name>/docs/01-grill-summary.md`
-3. **Spawn Agents** — Invoke 4 agents sequentially:
-   - `product-manager` (uses grill answers → creates roadmap)
-   - `business-analyst` (uses grill + roadmap → creates requirements)
-   - `software-architect` (uses grill + requirements → creates architecture)
-   - `security-architect` (uses grill + architecture → creates threat model)
+```
+/sdlc-plan "add a login page"
+/sdlc-plan "build a reporting dashboard"
+```
 
 ---
 
 ## EXECUTION
 
-### STEP 1: Grill-Me Interview
+### STEP 1: Invoke product-manager
 
-Ask **32 questions ONE AT A TIME** across these 8 sections. For each question, wait for user answer before proceeding to next.
+```
+Spawn: Agent({
+  name: "product-manager",
+  description: "Product Manager — grill-me interview + slice decomposition",
+  prompt: "Feature request: <user's feature description>
 
-**Section 1: Problem & Pain Points (4 questions)**
-1. What is the core problem you're solving?
-2. Who experiences this problem?
-3. Why is this important NOW?
-4. What's the business impact if unsolved?
+  Conduct the full grill-me interview (Phase A–D). Do not skip any phase.
+  After the interview resolves:
+  1. Write ./projects/<feature-name>/grill-summary.md with the full interview transcript
+  2. Decompose the feature into tracer bullet slices
+  3. Write ./projects/<feature-name>/scope.json with capability_flags + slices array
 
-**Section 2: Users & Personas (4 questions)**
-5. Who are your primary users? (describe 2-3 personas)
-6. What are their specific pain points?
-7. How do they currently solve this (status quo)?
-8. How would they measure success?
+  The first slice must always be type: prefactor (project scaffold + health check).
+  Subsequent slices are type: feature named from the user's perspective.
+  layers are derived from grill-me answers (has_ui → include 'ui', etc.)."
+})
+```
 
-**Section 3: Scope & Constraints (5 questions)**
-9. What's your timeline/deadline?
-10. How many engineers can work on this?
-11. What's your budget/resource constraints?
-12. What's explicitly off-limits (what won't you do)?
-13. What dependencies exist (other teams, APIs, infrastructure)?
+Wait for product-manager to complete. Verify:
+- `./projects/<feature-name>/grill-summary.md` exists
+- `./projects/<feature-name>/scope.json` exists and is valid JSON
 
-**Section 4: Technical Landscape (4 questions)**
-14. What's your existing tech stack?
-15. What can you reuse vs. build new?
-16. What are hard constraints? (compliance, security, legacy systems)
-17. Are there preferred technologies or frameworks?
+---
 
-**Section 5: Performance & Scale (3 questions)**
-18. How many users/requests per second?
-19. What latency targets do you have?
-20. What's the growth trajectory? (1 year, 5 years)
+### STEP 2: Prompt — Publish PRD and create issues?
 
-**Section 6: Security & Compliance (4 questions)**
-21. What data will you handle? (PII, payment, health, etc.)
-22. What compliance requirements apply? (GDPR, SOC2, PCI, HIPAA)
-23. What security threats matter most?
-24. Are there industry-specific standards?
+Display the scope.json content to the user:
 
-**Section 7: Success Metrics - QUANTS (5 questions)**
-25. **Quality**: How do you measure quality? (bugs, uptime %, test coverage)
-26. **Attention**: How will success be measured? (DAU, adoption %, engagement)
-27. **Toil**: How much manual work does this eliminate?
-28. **Time**: What time-based metrics matter? (faster deployments, quicker response)
-29. **Satisfaction**: How happy should users/team be? (NPS, CSAT, developer happiness)
+```
+✅ Plan phase complete!
 
-**Section 8: Dependencies & Risks (3 questions)**
-30. What needs to happen BEFORE you can start?
-31. What are the biggest unknown risks?
-32. What are your key assumptions? (What could be wrong?)
+Capability flags: [list from scope.json]
+Slices decomposed: [count] slices
+  • slice-0: [name] (prefactor)
+  • slice-1: [name] (feature)
+  • ...
 
-**After all 32 questions:** Summarize your understanding and ask: 
-> "Based on your answers, here's what I understand: [summary]. Is this accurate and complete? Is there anything I misunderstood or anything critical missing?"
+Ready to publish PRD and create issues?
+→ This will synthesize 01-prd.md and create one issue per slice.
+→ Reply "yes" to proceed or provide feedback to revise the scope.
+```
 
-If user says no or wants clarification, drill deeper on those specific areas until they confirm.
+If user wants revisions, feed their feedback back to product-manager for a revised scope.json.
 
-### STEP 2: Save Grill Summary
+---
 
-Create file: `./projects/<feature-name>/docs/01-grill-summary.md`
+### STEP 3: On confirm — Synthesize PRD
 
-Format:
+Create `./projects/<feature-name>/docs/01-prd.md` from `grill-summary.md` + `scope.json`:
+
 ```markdown
-# Grill-Me Interview Summary
+# PRD — [Feature Name]
 
-**Feature**: [feature description]
-**Date**: [timestamp]
+**Date**: [date]
+**Status**: Draft
 
-## Section 1: Problem & Pain Points
-[Q1 answer]
-[Q2 answer]
-[Q3 answer]
-[Q4 answer]
+## Problem Statement
+[From grill-summary: problem, urgency, prior attempts]
 
-## Section 2: Users & Personas
-[Q5 answer]
-[Q6 answer]
-[Q7 answer]
-[Q8 answer]
+## Users & Personas
+[From grill-summary: personas, pain points]
 
-## Section 3: Scope & Constraints
-[Q9 answer]
-[Q10 answer]
-[Q11 answer]
-[Q12 answer]
-[Q13 answer]
+## Constraints
+[From grill-summary: timeline, budget, technical constraints]
 
-## Section 4: Technical Landscape
-[Q14 answer]
-[Q15 answer]
-[Q16 answer]
-[Q17 answer]
+## Success Criteria (QUANTS)
+[From grill-summary: measurable targets]
 
-## Section 5: Performance & Scale
-[Q18 answer]
-[Q19 answer]
-[Q20 answer]
+## Capability Flags
+| Flag | Value |
+|------|-------|
+| has_ui | [true/false] |
+| has_auth | [true/false] |
+| has_mobile | [true/false] |
+| needs_pentest | [true/false] |
+| has_data_pipeline | [true/false] |
+| needs_performance_audit | [true/false] |
 
-## Section 6: Security & Compliance
-[Q21 answer]
-[Q22 answer]
-[Q23 answer]
-[Q24 answer]
+## Slices
 
-## Section 7: Success Metrics (QUANTS)
-[Q25-Q29 answers]
-
-## Section 8: Dependencies & Risks
-[Q30 answer]
-[Q31 answer]
-[Q32 answer]
-
-## Confirmation
-✅ User confirmed this summary is accurate and complete.
+| ID | Name | Type | Layers |
+|----|------|------|--------|
+| slice-0 | [name] | prefactor | [layers] |
+| slice-1 | [name] | feature | [layers] |
 ```
-
-### STEP 3: Spawn Phase 1 Agents (6 agents, 2 parallel groups)
-
-**Sequential Order:**
-1. product-manager (no deps)
-2. business-analyst (needs product-manager)
-3. software-architect (needs business-analyst)
-4. security-architect (needs software-architect)
-5. tech-lead (parallel with security-architect, needs software-architect)
-6. engineering-manager (parallel with security-architect, needs business-analyst)
 
 ---
 
-**Agent 1: product-manager** (FIRST — blocks business-analyst)
-```
-Spawn: Agent({
-  subagent_type: "fork",
-  description: "Product Manager (Phase 1) — Define vision, roadmap, QUANTS metrics",
-  prompt: "[Full grill-me summary]
-  
-  Skills: skill-grill-me, skill-requirements, skill-prd-synthesis
-  
-  Using grill-me answers as your single source of truth:
-  1. Create 01-roadmap.md with:
-     - Product vision (problem solved, target users)
-     - Feature roadmap (MVP + phases)
-     - QUANTS metrics (quality, attention, toil, time, satisfaction targets)
-     - Milestones + timeline
-  2. Save to: ./projects/<feature-name>/docs/01-roadmap.md"
-})
-```
+### STEP 4: Create issues (Linear MCP or fallback)
 
-**Wait for product-manager to complete.**
+**If Linear MCP is available:**
+1. Publish `01-prd.md` content as a Linear document
+2. For each slice in `scope.json`, create a Linear issue:
+   - Title: slice name
+   - Description: slice layers + acceptance criteria derived from grill-summary
+   - Label: `slice-0` → `prefactor`, others → `feature`
+3. Rewrite `scope.json` — add `"linear_id": "SAI-XX"` to each slice entry
 
----
+**If Linear MCP is unavailable:**
+1. Write `./projects/<feature-name>/docs/issues.md`:
+   ```markdown
+   # Issues
 
-**Agent 2: business-analyst** (SECOND — needs product-manager)
-```
-Spawn: Agent({
-  subagent_type: "fork",
-  description: "Business Analyst (Phase 1) — Decompose into INVEST user stories",
-  prompt: "[Full grill-me summary + 01-roadmap.md]
-  
-  Skills: skill-requirements, skill-plan-breakdown, skill-issue-triage
-  
-  Using grill-me + roadmap as ground truth:
-  1. Create 01-requirements.md with:
-     - User personas (from grill-me)
-     - User stories (INVEST format: Given/When/Then)
-     - Acceptance criteria (testable, measurable)
-     - Data flow diagrams
-     - Business rules + edge cases
-  2. Stories must reference personas + pain points from grill-me
-  3. Save to: ./projects/<feature-name>/docs/01-requirements.md"
-})
-```
-
-**Wait for business-analyst to complete.**
+   | id | name | type | status |
+   |----|------|------|--------|
+   | slice-0 | Project scaffold + health check | prefactor | todo |
+   | slice-1 | [name] | feature | todo |
+   ```
+2. Rewrite `scope.json` — add `"issue_ref": "docs/issues.md#slice-N"` to each slice entry
+3. Note in completion output: "Linear unavailable — issues written to docs/issues.md"
 
 ---
 
-**Agent 3: software-architect** (THIRD — needs business-analyst)
+### STEP 5: Prompt — Ready to start Build?
+
 ```
-Spawn: Agent({
-  subagent_type: "fork",
-  description: "Software Architect (Phase 1) — Tech stack, ADR, component design",
-  prompt: "[Full grill-me summary + 01-requirements.md]
-  
-  Skills: skill-architecture, skill-threat-modeling, skill-zoom-out
-  
-  Using grill-me constraints + requirements as ground truth:
-  1. Create 01-architecture.md with:
-     - ADR (Context/Decision/Consequences format)
-     - Tech stack (respects grill-me constraints: timeline, team, budget)
-     - Component design (services, databases, APIs)
-     - Trade-off analysis (3 options per major decision)
-     - Fitness functions (automated architecture compliance)
-  2. Create ARCHITECTURE.mmd with Mermaid diagrams:
-     - Component diagram (services + dependencies)
-     - Deployment diagram (frontend, backend services, databases)
-     - Data flow diagram
-  3. Save to: ./projects/<feature-name>/docs/"
-})
+✅ PRD published! [N] issues created.
+
+Ready to start Build?
+→ This will run /handoff (creating handoffs/plan-handoff.md) then invoke /sdlc-build.
+→ Reply "yes" to proceed or "no" to pause here.
 ```
 
-**Wait for software-architect to complete.**
-
----
-
-**NOW SPAWN IN PARALLEL (both depend on architecture):**
-
-**Agent 4: security-architect** (PARALLEL)
-```
-Spawn: Agent({
-  subagent_type: "fork",
-  description: "Security Architect (Phase 1) — STRIDE threat modeling",
-  prompt: "[Full grill-me summary + 01-architecture.md]
-  
-  Skills: skill-threat-modeling, skill-security-audit
-  
-  Using grill-me security requirements + architecture:
-  1. Create 01-threat-model.md with:
-     - STRIDE analysis (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege)
-     - Threat actors (from grill-me personas)
-     - Attack surfaces (user inputs, API boundaries, data stores)
-     - Security controls (authentication, authorization, encryption, logging)
-     - Risk ranking (Critical/High/Medium/Low)
-  2. Threat model must align with grill-me compliance requirements
-  3. Save to: ./projects/<feature-name>/docs/01-threat-model.md"
-})
-```
-
-**Agent 5: tech-lead** (PARALLEL with security-architect)
-```
-Spawn: Agent({
-  subagent_type: "fork",
-  description: "Tech Lead (Phase 1) — Review architecture decisions",
-  prompt: "[Full grill-me summary + 01-architecture.md + 01-requirements.md]
-  
-  Skills: skill-architecture, skill-knowledge-management, skill-api-design, skill-tech-debt, skill-code-review
-  
-  Using architecture as initial design:
-  1. Review ADR for completeness + clarity
-  2. Provide feedback on:
-     - Tech stack choices (scalability, team familiarity)
-     - Component boundaries (coupling/cohesion)
-     - API contracts (design consistency)
-  3. Identify technical debt risks early
-  4. Create tech-lead-feedback.md with:
-     - Architecture strengths
-     - Risks to watch
-     - Code review guidelines for Phase 3
-  5. Save to: ./projects/<feature-name>/docs/tech-lead-feedback.md"
-})
-```
-
-**Agent 6: engineering-manager** (PARALLEL with security-architect + tech-lead)
-```
-Spawn: Agent({
-  subagent_type: "fork",
-  description: "Engineering Manager (Phase 1) — Team planning + skill gaps",
-  prompt: "[Full grill-me summary + 01-requirements.md]
-  
-  Skills: skill-organizational-health, skill-knowledge-management, skill-tech-debt
-  
-  Using grill-me constraints + user stories:
-  1. Create team-plan.md with:
-     - Team composition (from grill-me: engineer count + timeline)
-     - Skill gaps (identify specialists needed)
-     - Parallel work streams (which teams work on what)
-     - Risk mitigation (single points of failure)
-     - Knowledge transfer plan
-  2. Align with grill-me timeline + budget constraints
-  3. Save to: ./projects/<feature-name>/docs/team-plan.md"
-})
-```
-
-**Wait for all 3 parallel agents to complete (security-architect, tech-lead, engineering-manager).**
-
-### STEP 4: Display Completion
-
-Show:
-```
-✅ Phase 1 Complete! (6 agents invoked)
-
-📁 Artifacts created:
-  ./projects/<feature-name>/docs/
-    ├── 01-grill-summary.md           (source of truth)
-    ├── 01-roadmap.md                 (product-manager)
-    ├── 01-requirements.md            (business-analyst)
-    ├── 01-architecture.md            (software-architect)
-    ├── ARCHITECTURE.mmd              (software-architect)
-    ├── 01-threat-model.md            (security-architect)
-    ├── tech-lead-feedback.md         (tech-lead)
-    └── team-plan.md                  (engineering-manager)
-
-✅ Agents completed:
-  1. product-manager        → roadmap + vision
-  2. business-analyst       → user stories + AC
-  3. software-architect     → tech stack + ADR
-  4. security-architect     → threat model + controls
-  5. tech-lead             → architecture review
-  6. engineering-manager   → team plan + skills
-
-All artifacts in: ./projects/<feature-name>/docs/
-
-Next: Run /sdlc-design for Phase 2 (Design & Prototyping)
-```
+On confirm:
+1. Run `/handoff` — stores compressed context at `./projects/<feature-name>/handoffs/plan-handoff.md`
+2. Invoke `/sdlc-build`
 
 ---
 
 ## CRITICAL RULES
 
-✅ **MANDATORY**: All 32 questions must be asked
-✅ **MANDATORY**: Grill summary MUST be saved before agents start
-✅ **MANDATORY**: Agents must be spawned SEQUENTIALLY (wait for each to complete)
-✅ **MANDATORY**: Each agent reads grill-summary as first step
-✅ **MANDATORY**: Use `fork` subagent_type to keep context
-
-## Source of Truth
-
-Grill-me answers are the **single source of truth** for all Phase 1 agents. Every artifact downstream must be grounded in customer input, not assumptions.
+✅ Exactly 1 agent invoked (product-manager) — no business-analyst, no software-architect
+✅ grill-summary.md MUST exist before PRD synthesis
+✅ scope.json MUST be valid JSON before issue creation
+✅ First slice MUST be type: prefactor
+✅ scope.json is rewritten after issue creation to add linear_id or issue_ref
+✅ /handoff runs before /sdlc-build begins
+✅ User is prompted twice: before publishing PRD/issues, and before advancing to Build

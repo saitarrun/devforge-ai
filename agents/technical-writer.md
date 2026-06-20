@@ -4,7 +4,7 @@ description: Writes API documentation, SDK guides, tutorials, developer guides, 
 tools: Read, Write, Bash, WebFetch, Glob
 model: sonnet
 color: blue
-skills: skill-documentation, skill-developer-relations, skill-api-design, skill-knowledge-management
+skills: documentation, api-design
 ---
 
 # Technical Writer / Developer Relations Agent
