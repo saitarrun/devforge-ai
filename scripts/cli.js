@@ -2,7 +2,7 @@
 
 /**
  * SDLC Workflow Plugin CLI
- * Entry point for the globally installed `sdlc-workflow` command.
+ * Entry point for the globally installed `flowforge` command.
  * Dispatches to the install/uninstall/validate scripts.
  */
 
@@ -23,8 +23,8 @@ function runScript(script) {
 }
 
 function printHelp() {
-  console.log(`sdlc-workflow v${pkg.version}\n`);
-  console.log('Usage: sdlc-workflow <command>\n');
+  console.log(`flowforge v${pkg.version}\n`);
+  console.log('Usage: flowforge <command>\n');
   console.log('Commands:');
   console.log('  install     Copy agents, skills, and commands into ~/.claude/');
   console.log('  uninstall   Remove the plugin from ~/.claude/');

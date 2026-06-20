@@ -1,11 +1,11 @@
-# SDLC Workflow Plugin
+# FlowForge
 
-[![npm version](https://img.shields.io/npm/v/sdlc-ai-workflow?style=flat-square&color=blue)](https://www.npmjs.com/package/sdlc-ai-workflow)
+[![npm version](https://img.shields.io/npm/v/flowforge?style=flat-square&color=blue)](https://www.npmjs.com/package/flowforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
-[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/sdlc-ai-workflow)
+[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/FlowForge)
 [![Node.js](https://img.shields.io/badge/Node.js->=18.0.0-green?style=flat-square&logo=node.js)](https://nodejs.org/)
 
-**AI-powered tracer bullet SDLC orchestration** — 10 agents across 5 phases with Ralph Loop self-correction, Linear issue integration, and handoff-bounded context windows.
+**FlowForge is AI-powered tracer bullet SDLC orchestration** — 10 agents across 5 phases with Ralph Loop self-correction, Linear issue integration, and handoff-bounded context windows.
 
 **Built for**: Claude Code users who want end-to-end feature delivery from interview to production.
 
@@ -34,8 +34,8 @@
 ### Option A: Global NPM (Recommended)
 
 ```bash
-sudo npm install -g sdlc-ai-workflow
-sdlc-ai-workflow install
+sudo npm install -g flowforge
+flowforge install
 ```
 
 Restart Claude Code. Done!
@@ -43,8 +43,8 @@ Restart Claude Code. Done!
 ### Option B: Install from Source
 
 ```bash
-git clone https://github.com/saitarrun/sdlc-ai-workflow
-cd sdlc-ai-workflow
+git clone https://github.com/saitarrun/FlowForge
+cd FlowForge
 npm install
 npm run install-local
 ```
@@ -251,8 +251,8 @@ make uninstall
 ## Update
 
 ```bash
-sudo npm install -g sdlc-ai-workflow@latest
-sdlc-ai-workflow install
+sudo npm install -g flowforge@latest
+flowforge install
 ```
 
 ---

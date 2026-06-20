@@ -1,8 +1,9 @@
 {
-  "name": "sdlc-ai-workflow",
+  "name": "flowforge",
   "version": "2.0.0",
-  "description": "Tracer bullet SDLC plugin for Claude Code: 10 agents, 34 skills, 10 commands, 5 phases. Plan → Build → Verify → Ship → Operate with Ralph Loop self-correction and Linear issue integration.",
+  "description": "FlowForge is a tracer bullet SDLC plugin for Claude Code: 10 agents, 36 skills, 10 commands, 5 phases. Plan → Build → Verify → Ship → Operate with Ralph Loop self-correction and Linear issue integration.",
   "keywords": [
+    "flowforge",
     "claude-code",
     "claude-code-plugin",
     "sdlc",
@@ -39,13 +40,13 @@
     "automation",
     "agents"
   ],
-  "homepage": "https://github.com/saitarrun/sdlc-ai-workflow",
+  "homepage": "https://github.com/saitarrun/FlowForge",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saitarrun/sdlc-ai-workflow"
+    "url": "https://github.com/saitarrun/FlowForge"
   },
   "bugs": {
-    "url": "https://github.com/saitarrun/sdlc-ai-workflow/issues"
+    "url": "https://github.com/saitarrun/FlowForge/issues"
   },
   "author": {
     "name": "saitarrun",
@@ -74,7 +75,7 @@
     "test": "echo 'Plugin tests would run here' && exit 0"
   },
   "bin": {
-    "sdlc-ai-workflow": "scripts/cli.js"
+    "flowforge": "scripts/cli.js"
   },
   "claude": {
     "type": "plugin",
