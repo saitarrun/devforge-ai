@@ -44,13 +44,13 @@ function replaceDir(src, dest, label) {
 // Agents and commands are namespaced under their own subdirectory.
 replaceDir(
   path.join(PLUGIN_DIR, 'agents'),
-  path.join(CLAUDE_HOME, 'agents', 'sdlc-ai-automation'),
-  'agents → agents/sdlc-ai-automation',
+  path.join(CLAUDE_HOME, 'agents', 'devforge-ai'),
+  'agents → agents/devforge-ai',
 );
 replaceDir(
   path.join(PLUGIN_DIR, 'commands'),
-  path.join(CLAUDE_HOME, 'commands', 'sdlc-ai-automation'),
-  'commands → commands/sdlc-ai-automation',
+  path.join(CLAUDE_HOME, 'commands', 'devforge-ai'),
+  'commands → commands/devforge-ai',
 );
 
 // Skills are copied one directory at a time so we only touch our own skills.

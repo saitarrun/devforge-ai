@@ -21,7 +21,7 @@ A specialized code review analysis tool that provides:
 The code-review-graph is automatically included. Access it via:
 
 ```bash
-# From the sdlc-ai-automation directory
+# From the devforge-ai directory
 cd integrations/code-review-graph
 
 # Or directly reference from plugin
@@ -120,11 +120,11 @@ ELSE:
 
 ### For Plugin Users
 
-No additional installation required. When you install `sdlc-ai-automation`, code-review-graph comes pre-integrated:
+No additional installation required. When you install `devforge-ai`, code-review-graph comes pre-integrated:
 
 ```bash
 # One-step install includes both
-npm install -g sdlc-ai-automation
+npm install -g devforge-ai
 # ✓ SDLC Agent Kit plugin installed
 # ✓ code-review-graph integration enabled
 ```
@@ -138,8 +138,8 @@ To update the submodule:
 git submodule update --remote
 
 # Or clone with submodules
-git clone https://github.com/saitarrun/sdlc-ai-automation.git
-cd sdlc-ai-automation
+git clone https://github.com/saitarrun/devforge-ai.git
+cd devforge-ai
 git submodule update --init --recursive
 ```
 

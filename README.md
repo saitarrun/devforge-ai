@@ -1,15 +1,15 @@
 <p>
-  <a href="https://github.com/saitarrun/sdlc-ai-automation">
+  <a href="https://github.com/saitarrun/devforge-ai">
     <img alt="SDLC Agent Kit" src="https://img.shields.io/badge/FlowForge__AI-Agentic%20SDLC%20Workflow-111827?style=for-the-badge&logo=github&logoColor=white" width="369">
   </a>
 </p>
 
 # SDLC Agent Kit
 
-[![npm version](https://img.shields.io/npm/v/%40saitarrunpitta%2Fsdlc-ai-automation?style=flat-square&color=blue)](https://www.npmjs.com/package/sdlc-ai-automation)
+[![npm version](https://img.shields.io/npm/v/%40saitarrunpitta%2Fdevforge-ai?style=flat-square&color=blue)](https://www.npmjs.com/package/devforge-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js->=18.0.0-green?style=flat-square&logo=node.js)](https://nodejs.org/)
-[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/sdlc-ai-automation)
+[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/devforge-ai)
 
 Agentic SDLC orchestration for Claude Code. SDLC Agent Kit turns an idea into a planned, built, verified, shipped, and operated feature using role-specific agents, tracer bullet slices, quality gates, and handoff documents.
 
@@ -20,13 +20,13 @@ This is not a one-shot code generator. SDLC Agent Kit is a delivery workflow: pr
 1. Install the package:
 
 ```bash
-sudo npm install -g sdlc-ai-automation
+sudo npm install -g devforge-ai
 ```
 
 2. Install the SDLC Agent Kit agents, skills, commands, and integrations into Claude Code:
 
 ```bash
-sdlc-ai-automation install
+devforge-ai install
 ```
 
 3. Restart Claude Code, then run the full pipeline:
@@ -48,8 +48,8 @@ sdlc-ai-automation install
 ## Install From Source
 
 ```bash
-git clone https://github.com/saitarrun/sdlc-ai-automation
-cd sdlc-ai-automation
+git clone https://github.com/saitarrun/devforge-ai
+cd devforge-ai
 npm install
 npm run install-local
 ```

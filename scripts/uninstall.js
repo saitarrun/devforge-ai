@@ -24,8 +24,8 @@ function removePath(target, label) {
 }
 
 // Agents and commands live in their own plugin subdirectory.
-removePath(path.join(CLAUDE_HOME, 'agents', 'sdlc-ai-automation'), 'agents/sdlc-ai-automation');
-removePath(path.join(CLAUDE_HOME, 'commands', 'sdlc-ai-automation'), 'commands/sdlc-ai-automation');
+removePath(path.join(CLAUDE_HOME, 'agents', 'devforge-ai'), 'agents/devforge-ai');
+removePath(path.join(CLAUDE_HOME, 'commands', 'devforge-ai'), 'commands/devforge-ai');
 
 // Skills are copied individually into ~/.claude/skills; remove only ours.
 const skillsSrc = path.join(PLUGIN_DIR, 'skills');

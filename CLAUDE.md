@@ -6,7 +6,7 @@ A multi-agent SDLC orchestration system: 10 agents × 5 phases → plan, build, 
 
 - **Type**: Claude Code plugin
 - **Version**: 2.0.0
-- **Repo**: github.com/saitarrun/sdlc-ai-automation
+- **Repo**: github.com/saitarrun/devforge-ai
 
 ## Repository Map
 

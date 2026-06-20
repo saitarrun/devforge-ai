@@ -2,7 +2,7 @@
 
 /**
  * SDLC Workflow Plugin CLI
- * Entry point for the globally installed `sdlc-ai-automation` command.
+ * Entry point for the globally installed `devforge-ai` command.
  * Dispatches to the install/uninstall/validate scripts.
  */
 
@@ -23,8 +23,8 @@ function runScript(script) {
 }
 
 function printHelp() {
-  console.log(`sdlc-ai-automation v${pkg.version}\n`);
-  console.log('Usage: sdlc-ai-automation <command>\n');
+  console.log(`devforge-ai v${pkg.version}\n`);
+  console.log('Usage: devforge-ai <command>\n');
   console.log('Commands:');
   console.log('  install     Copy agents, skills, and commands into ~/.claude/');
   console.log('  uninstall   Remove the plugin from ~/.claude/');
