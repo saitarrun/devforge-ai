@@ -1,6 +1,6 @@
 {
   "name": "@saitarrunpitta/flowforge_ai",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "FlowForge is a tracer bullet SDLC plugin for Claude Code: 10 agents, 36 skills, 10 commands, 5 phases. Plan → Build → Verify → Ship → Operate with Ralph Loop self-correction and Linear issue integration.",
   "keywords": [
     "flowforge",
