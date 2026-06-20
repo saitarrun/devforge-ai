@@ -1,7 +1,7 @@
 {
   "name": "sdlc-workflow",
-  "version": "1.0.0",
-  "description": "Complete SDLC Workflow in a Plugin: 26 agents across 6 phases (planning, design, development, testing, deployment, operations), 43 knowledge skills, 14 orchestrator commands. Industry-standard SDLC best practices embedded in every agent.",
+  "version": "2.0.0",
+  "description": "Tracer bullet SDLC plugin: 10 agents across 5 phases (plan, build, verify, ship, operate), 34 knowledge skills, 10 commands. Ralph Loop self-correction, Linear issue integration, scope.json as single source of truth.",
   "keywords": [
     "sdlc",
     "workflow",
@@ -10,7 +10,9 @@
     "testing",
     "security",
     "devops",
-    "ci-cd"
+    "ci-cd",
+    "tracer-bullet",
+    "ralph-loop"
   ],
   "homepage": "https://github.com/saitarrun/sdlc-ai-workflow",
   "repository": {
@@ -22,9 +24,9 @@
     "email": "saitarrunpitta@gmail.com"
   },
   "license": "MIT",
-  "agents": 26,
-  "skills": 43,
-  "commands": 14,
+  "agents": 10,
+  "skills": 34,
+  "commands": 10,
   "integrations": {
     "code-review-graph": {
       "name": "code-review-graph",
@@ -36,15 +38,13 @@
     }
   },
   "highlights": [
-    "20 specialized role-based agents",
-    "6-phase SDLC orchestrator with approval gates",
-    "43 knowledge skills: 13 core SDLC, 30 advanced methodology skills (incident mgmt, perf, a11y, observability, release, tech debt, org health, etc.)",
-    "6 new agents: Engineering Manager, Tech Lead, Release Manager, Technical Writer, Performance Engineer, Accessibility Engineer",
-    "6-phase SDLC covering planning, design, development, testing, deployment, operations",
-    "Ready-to-use templates: RFC, design docs, ADRs, postmortems, SLOs, incident reports, performance benchmarks, accessibility audits",
-    "Code quality enforcement: linting, testing pyramid, SAST/SCA, CI/CD gates",
-    "Integrated code-review-graph for visual dependency analysis and change impact",
-    "Production-ready configuration templates",
-    "Complete documentation and examples"
+    "10 consolidated role-based agents (product-manager, ux-designer, fullstack-engineer, qa-engineer, security-engineer, performance-engineer, devops-engineer, sre-engineer, data-engineer, technical-writer)",
+    "5-phase SDLC: Plan → Build → Verify → Ship → Operate",
+    "Tracer bullet slices — vertical schema+api+ui+tests per feature",
+    "Ralph Loop — self-correcting inner/outer retry with circuit breaker",
+    "scope.json as single source of truth with Linear issue integration",
+    "Handoff documents keep each phase context bounded",
+    "34 knowledge skills injected as methodology context",
+    "Integrated code-review-graph for visual dependency analysis"
   ]
 }

@@ -11,7 +11,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run lint`, `npm run lint:fix`
   - ✓ `.husky-pre-commit.sh` — Step 1: Linting check
   - ✓ `github-actions-ci.yml` — Step 1️⃣ Linting
-  - ✓ **Agent**: automation-qa-engineer (validates linting in CI)
+  - ✓ **Agent**: qa-engineer (validates linting in CI)
 
 ### Formatting
 - **Requirement**: Automate code layout using tools like Prettier or Black to prevent formatting arguments
@@ -20,14 +20,14 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run format`, `npm run format:check`
   - ✓ `.husky-pre-commit.sh` — Step 2: Prettier auto-format
   - ✓ `github-actions-ci.yml` — Step 1️⃣ Formatting check
-  - ✓ **Agent**: automation-qa-engineer
+  - ✓ **Agent**: qa-engineer
 
 ### Naming Conventions
 - **Requirement**: Enforce uniform, self-descriptive naming for variables, classes, methods, and files
 - **Implementation**:
   - ✓ `.eslintrc.js` — `id-length`, `id-match` rules
   - ✓ `SKILL.md` — Section 1: Naming Conventions (standard patterns)
-  - ✓ **Agent**: automation-qa-engineer (validates in tests)
+  - ✓ **Agent**: qa-engineer (validates in tests)
 
 ### Complexity Control
 - **Requirement**: Track and limit Cyclomatic Complexity to keep functions small and readable
@@ -36,7 +36,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run complexity:check`
   - ✓ `github-actions-ci.yml` — Step 1️⃣ Code Complexity Check
   - ✓ `SKILL.md` — Section 1: Complexity Control
-  - ✓ **Agent**: automation-qa-engineer
+  - ✓ **Agent**: qa-engineer
 
 ### DRY Principle
 - **Requirement**: Scan for and eliminate duplicated logic or copy-pasted code blocks
@@ -45,7 +45,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run dry:check` (uses jscpd)
   - ✓ `github-actions-ci.yml` — Step 1️⃣ DRY Check
   - ✓ `SKILL.md` — Section 1: DRY Principle
-  - ✓ **Agent**: automation-qa-engineer
+  - ✓ **Agent**: qa-engineer
 
 ---
 
@@ -59,7 +59,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `github-actions-ci.yml` — Step 2️⃣ Unit Tests
   - ✓ `.husky-pre-commit.sh` — Step 4: Run affected unit tests
   - ✓ `SKILL.md` — Section 2: Testing Pyramid (70%)
-  - ✓ **Agent**: automation-qa-engineer (writes and validates unit tests)
+  - ✓ **Agent**: qa-engineer (writes and validates unit tests)
 
 ### Integration Tests
 - **Requirement**: Validate that different system modules, databases, and APIs work together properly
@@ -68,7 +68,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run test:integration`
   - ✓ `github-actions-ci.yml` — Step 2️⃣ Integration Tests
   - ✓ `SKILL.md` — Section 2: Testing Pyramid (20%)
-  - ✓ **Agent**: automation-qa-engineer
+  - ✓ **Agent**: qa-engineer
 
 ### Code Coverage
 - **Requirement**: Enforce a minimum test coverage threshold (typically 80% or higher) before merging code
@@ -77,7 +77,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run test:coverage`, `npm run test:coverage:report`
   - ✓ `github-actions-ci.yml` — Step 2️⃣ Coverage Report, codecov upload
   - ✓ `SKILL.md` — Section 2: Code Coverage Thresholds
-  - ✓ **Agent**: automation-qa-engineer (enforces coverage in CI)
+  - ✓ **Agent**: qa-engineer (enforces coverage in CI)
 
 ### Regression Testing
 - **Requirement**: Automatically rerun old tests on new changes to ensure existing features do not break
@@ -87,7 +87,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `github-actions-ci.yml` — Step 2️⃣ Flaky Test Detection
   - ✓ `.husky-pre-commit.sh` — Step 4: Tests pass every time
   - ✓ `SKILL.md` — Section 2: Regression Testing
-  - ✓ **Agent**: automation-qa-engineer
+  - ✓ **Agent**: qa-engineer
 
 ---
 
@@ -97,13 +97,13 @@ This document maps all user-provided code quality standards to specific configur
 - **Requirement**: Enforce object-oriented design principles to keep code modular and adaptable
 - **Implementation**:
   - ✓ `SKILL.md` — Section 3: SOLID Principles (with examples)
-  - ✓ **Agent**: automation-qa-engineer (validates in code review)
+  - ✓ **Agent**: qa-engineer (validates in code review)
 
 ### Documentation
 - **Requirement**: Mandate up-to-date inline comments for complex logic, plus comprehensive README files
 - **Implementation**:
   - ✓ `SKILL.md` — Section 3: Documentation Standards
-  - ✓ **Agent**: qa-manual-tester (checks documentation in test case writing)
+  - ✓ **Agent**: qa-engineer (checks documentation in test case writing)
 
 ### Technical Debt Tracking
 - **Requirement**: Flag, document, and schedule fixes for temporary shortcuts or legacy code
@@ -111,7 +111,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run debt:check` (grep for TODO/FIXME/HACK)
   - ✓ `github-actions-ci.yml` — Step 3️⃣ Check Technical Debt
   - ✓ `SKILL.md` — Section 3: Technical Debt Tracking
-  - ✓ **Agent**: automation-qa-engineer
+  - ✓ **Agent**: qa-engineer
 
 ### Dependency Hygiene
 - **Requirement**: Monitor and update external packages to minimize bloat and outdated code
@@ -132,7 +132,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run security:check` (Snyk integration)
   - ✓ `github-actions-ci.yml` — Step 4️⃣ SAST Scanning
   - ✓ `SKILL.md` — Section 4: SAST Scanning (tools, patterns, CI integration)
-  - ✓ **Agent**: appsec-engineer (performs SAST audits)
+  - ✓ **Agent**: security-engineer (performs SAST audits)
 
 ### SCA Auditing
 - **Requirement**: Run Software Composition Analysis to check external libraries for known vulnerabilities
@@ -140,7 +140,7 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `package.json.scripts` — `npm run audit` (npm audit)
   - ✓ `github-actions-ci.yml` — Step 4️⃣ SCA Scanning
   - ✓ `SKILL.md` — Section 4: SCA Scanning
-  - ✓ **Agent**: appsec-engineer, devops-engineer
+  - ✓ **Agent**: security-engineer, devops-engineer
 
 ### Secret Detection
 - **Requirement**: Scan code repositories to prevent hardcoded passwords, API keys, or certificates
@@ -149,14 +149,14 @@ This document maps all user-provided code quality standards to specific configur
   - ✓ `.husky-pre-commit.sh` — Step 5: Secret Detection
   - ✓ `github-actions-ci.yml` — Step 4️⃣ Secret Detection
   - ✓ `SKILL.md` — Section 4: Secret Detection
-  - ✓ **Agent**: appsec-engineer, automation-qa-engineer
+  - ✓ **Agent**: security-engineer, qa-engineer
 
 ### Input Validation
 - **Requirement**: Enforce strict sanitization and validation on all data entering the system
 - **Implementation**:
   - ✓ `SKILL.md` — Section 4: Input Validation & Output Encoding (with code examples)
-  - ✓ **Agent**: qa-manual-tester (security testing checklist includes input validation)
-  - ✓ **Agent**: appsec-engineer (validates input handling in code)
+  - ✓ **Agent**: qa-engineer (security testing checklist includes input validation)
+  - ✓ **Agent**: security-engineer (validates input handling in code)
 
 ---
 
@@ -167,7 +167,7 @@ This document maps all user-provided code quality standards to specific configur
 - **Implementation**:
   - ✓ `github-actions-ci.yml` — Status check blocks merge if quality-gates fail
   - ✓ `SKILL.md` — Section 5: Peer Review Process (checklist)
-  - ✓ **Agent**: qa-manual-tester (documents review checklist in bug reports)
+  - ✓ **Agent**: qa-engineer (documents review checklist in bug reports)
 
 ### Automated Gates
 - **Requirement**: Block code merges automatically if linting, security scans, or unit tests fail in the CI pipeline
@@ -198,9 +198,9 @@ This document maps all user-provided code quality standards to specific configur
 
 | Agent | Responsibility | Standards |
 |-------|-----------------|-----------|
-| **automation-qa-engineer** | Write test suites, enforce coverage, CI/CD gates | 1, 2, 4, 5 |
-| **qa-manual-tester** | Security testing, input validation, documentation | 1, 3, 4 |
-| **appsec-engineer** | SAST, SCA, secret detection, code quality | 3, 4, 5 |
+| **qa-engineer** | Write test suites, enforce coverage, CI/CD gates | 1, 2, 4, 5 |
+| **qa-engineer** | Security testing, input validation, documentation | 1, 3, 4 |
+| **security-engineer** | SAST, SCA, secret detection, code quality | 3, 4, 5 |
 | **devops-engineer** | CI/CD pipeline, dependency hygiene, automated gates | 1, 2, 3, 4, 5 |
 
 ---

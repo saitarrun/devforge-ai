@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2026-06-19
+
+### Breaking Changes
+
+#### 26 → 10 Agent Consolidation
+- Removed 19 agents; replaced with 3 merged agents and updated 6 existing
+- `ux-designer` — merged ux-researcher + ui-ux-designer
+- `qa-engineer` — merged qa-manual-tester + automation-qa-engineer
+- `security-engineer` — merged appsec-engineer + penetration-tester
+- `devops-engineer` — absorbed cloud-engineer + release-manager
+- `sre-engineer` — absorbed secops-analyst
+
+#### 6 → 5 Phase Pipeline
+- Removed Design phase; UX now runs at start of Build phase (gated on `has_ui`)
+- Phases: Plan → Build → Verify → Ship → Operate
+- Commands: `/sdlc-build` (was `/sdlc-dev`), `/sdlc-verify` (was `/sdlc-test`), `/sdlc-ship` (was `/sdlc-deploy`), `/sdlc-operate` (was `/sdlc-ops`)
+- Removed: `/sdlc-design`, `/sdlc-parallel`, `/sdlc-release`, `/sdlc-incident`, `/sdlc-retrospective`, `/sdlc-optimize`, `/sdlc-tech-debt`
+
+#### Tracer Bullet SDLC
+- `scope.json` is now the single source of truth: `capability_flags` + `slices` array
+- Each slice is a vertical increment: schema + api + ui + tests
+- `implementation-log.md` tracks all slice completions (appended by fullstack-engineer)
+- Phase handoffs via `handoffs/<phase>-handoff.md` — no conversation context carries across phases
+
+#### Ralph Loop
+- Inner loop: execute slice → verify (typecheck + slice tests) → pass/fail with 2-retry circuit breaker
+- Outer loop: qa-engineer E2E → targeted slice retry (max 1) → circuit breaker
+- New skill: `ralph-loop` in `skills/ralph-loop/SKILL.md`
+
+### New Commands
+- `/sdlc-implement` — implement a single Linear issue or free-form spec with Ralph Loop + /review + commit
+- `/to-prd` — synthesize PRD from existing `grill-summary.md` + `scope.json` without rerunning Plan
+- `/to-issues` — create Linear issues from `scope.json` slices; falls back to `docs/issues.md`
+
+### Skills
+- Renamed 33 skill directories: `skill-*` prefix removed (e.g. `skill-architecture` → `architecture`)
+- Fixed all `name:` frontmatter fields to match directory names
+- Deleted 11 unused skills: skill-accessibility, skill-build-systems, skill-caveman, skill-developer-relations, skill-incident-management, skill-knowledge-management, skill-localization, skill-organizational-health, skill-teach, skill-tech-debt, skill-release-management
+- New skill: `ralph-loop`
+
+### Scripts
+- Deleted 11 dead orchestrator/dashboard scripts: agent-executor.js, agent-init-hook.js, agent-reporter.js, collaboration-framework.js, orchestrator.js, process-manager.js, sdlc-menu.js, sdlc-orchestrator.js, skill-validator.js, spawn-agent-wrapper.sh, spawn-phase-agents.js
+- Removed stale npm scripts: `menu`, `orchestrator`, `agent-init`, `report-agent`
+
+### Documentation
+- README.md — full rewrite to reflect 5-phase tracer bullet architecture
+- CLAUDE.md — updated to 10 agents × 5 phases; removed deleted file references
+- INSTALLATION.md — updated command names
+- CHANGELOG.md — this entry
+- Deleted: AGENT_PHASE_MAP.md, EXECUTION_GUIDE.md, MIGRATION.md, QUICK_REFERENCE.md, AGENT_COLLABORATION.md, AGENT_DEVELOPMENT_GUIDE.md, AGENT_SKILLS_MANIFEST.md, INSTALLATION.md (docs/), QUICKSTART.md, SKILL_ENFORCEMENT_GUIDE.md
+
+---
+
 ## [1.3.3] - 2026-06-17
 
 ### ✨ Features

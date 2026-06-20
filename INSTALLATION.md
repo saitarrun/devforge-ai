@@ -11,7 +11,7 @@ sudo npm install -g sdlc-ai-workflow
 sdlc-ai-workflow install
 ```
 
-Then **restart Claude Code** and you're ready to use `/sdlc-plan`, `/sdlc-design`, etc.
+Then **restart Claude Code** and you're ready to use `/sdlc-plan`, `/sdlc-build`, etc.
 
 **To update later:**
 ```bash
@@ -61,12 +61,11 @@ ls ~/.claude/plugins/sdlc-workflow
 #### Step 5: Restart Claude Code
 
 Quit Claude Code completely and reopen it. The plugin commands will now be available:
-- `/sdlc-plan` — Phase 1 planning with grill-me interview
-- `/sdlc-design` — Phase 2 design
-- `/sdlc-dev` — Phase 3 development
-- `/sdlc-test` — Phase 4 testing
-- `/sdlc-deploy` — Phase 5 deployment
-- `/sdlc-ops` — Phase 6 operations
+- `/sdlc-plan` — Phase 1: Plan (grill-me interview + scope.json + PRD + issues)
+- `/sdlc-build` — Phase 2: Build (ux-designer + fullstack-engineer slices + qa-engineer)
+- `/sdlc-verify` — Phase 3: Verify (security-engineer + performance-engineer)
+- `/sdlc-ship` — Phase 4: Ship (devops-engineer CI/CD + cloud infra)
+- `/sdlc-operate` — Phase 5: Operate (sre-engineer + data-engineer)
 
 ---
 
