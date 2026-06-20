@@ -1,7 +1,7 @@
 .PHONY: install-local uninstall validate help
 
 help:
-	@echo "FlowForge Plugin — Development Makefile"
+	@echo "FlowForge_AI Plugin — Development Makefile"
 	@echo ""
 	@echo "Targets:"
 	@echo "  make install-local  — Copy plugin files to ~/.claude/ for immediate use"

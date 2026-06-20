@@ -21,7 +21,7 @@ A specialized code review analysis tool that provides:
 The code-review-graph is automatically included. Access it via:
 
 ```bash
-# From the FlowForge directory
+# From the FlowForge_ai directory
 cd integrations/code-review-graph
 
 # Or directly reference from plugin
