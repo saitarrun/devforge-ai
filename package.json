@@ -1,6 +1,6 @@
 {
   "name": "@saitarrunpitta/devforge-ai",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Optimised SDLC AI workflow — 10 agents × 5 phases (Plan → Build → Verify → Ship → Operate) with tracer bullet delivery, self-correction loops, and Linear integration for Claude Code.",
   "keywords": [
     "flowforge",
