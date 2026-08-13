@@ -126,7 +126,12 @@ Write `./projects/<feature-name>/grill-summary.md`:
 - has_ui: [true/false] — does this feature touch the UI?
 - has_auth: [true/false] — does this feature involve authentication?
 - has_mobile: [true/false] — does this feature need a mobile client?
+- has_llm: [true/false] — does this feature involve LLMs, RAG, prompt engineering, or vector stores?
+- has_event_driven: [true/false] — does this feature involve message brokers, WebSockets, or async event streaming (Kafka/RabbitMQ/Redis/EventBridge)?
 - needs_pentest: [true/false] — does scope, data sensitivity, or compliance require penetration testing?
+- needs_compliance_audit: [true/false] — does the feature require SOC2, GDPR, HIPAA, or PCI-DSS auditing?
+- needs_contract_testing: [true/false] — does the feature interact with external microservices requiring OpenAPI/Pact contract testing?
+- needs_otel: [true/false] — does the application require OpenTelemetry distributed tracing and observability metrics?
 - has_data_pipeline: [true/false] — does this feature involve ETL, analytics, or batch data processing?
 - needs_performance_audit: [true/false] — does the feature have specific performance SLOs that require load testing?
 

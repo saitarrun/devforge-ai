@@ -434,6 +434,8 @@ These are the skills most central to the DevForge AI pipeline:
 - **[`dependency-management`](./skills/dependency-management/SKILL.md)** - Version updates, CVEs, licenses, and transitive dependencies.
 - **[`configuration-management`](./skills/configuration-management/SKILL.md)** - Secrets, environment config, feature flags, and auditability.
 - **[`documentation`](./skills/documentation/SKILL.md)** - Docs-as-code, examples, tutorials, and API docs.
+- **[`llm-evals`](./skills/llm-evals/SKILL.md)** - AI/LLM evaluation metrics, RAG triad, token cost circuit breakers, and prompt safety.
+- **[`contract-testing`](./skills/contract-testing/SKILL.md)** - Consumer-driven contract testing, OpenAPI spec drift, and microservices API compatibility.
 - **[`write-skill`](./skills/write-skill/SKILL.md)** - Guidance for authoring new skills.
 
 ### Security, Delivery, And Operations Skills
