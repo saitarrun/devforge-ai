@@ -388,6 +388,7 @@ Commands are what you type. Agents are the role-specific workers. Skills are met
 - **[`/sdlc-navigate`](./commands/sdlc-navigate.md)** - Structural codebase navigation, symbol call-graphs, impact analysis, and module boundary mapping.
 - **[`/sdlc-diagnose`](./commands/sdlc-diagnose.md)** - Automated Root-Cause Analysis (RCA) and surgical fix engine for massive 1.5M+ file repositories.
 - **[`/sdlc-security`](./commands/sdlc-security.md)** - Automated security vulnerability remediation, CVE patching, and Zero-Trust protocol hardening.
+- **[`/sdlc-modernize`](./commands/sdlc-modernize.md)** - Industrial legacy modernization, Strangler Fig migrations, and zero-downtime schema evolution.
 - **[`/sdlc-review`](./commands/sdlc-review.md)** - Pull request review using parallel reviewer perspectives.
 - **[`/to-prd`](./commands/to-prd.md)** - Regenerate a PRD from existing planning artifacts.
 - **[`/to-issues`](./commands/to-issues.md)** - Create one issue per tracer bullet slice from `scope.json`.
@@ -436,6 +437,7 @@ These are the skills most central to the DevForge AI pipeline:
 - **[`pr-review`](./skills/pr-review/SKILL.md)** - Pull request review patterns.
 - **[`diagnose`](./skills/diagnose/SKILL.md)** - Reproduce, minimize, hypothesize, instrument, fix, and regression-test.
 - **[`root-cause-analysis`](./skills/root-cause-analysis/SKILL.md)** - Hyper-scale root cause bisection, call-tree backtracking, and automated surgical remediation.
+- **[`legacy-modernization`](./skills/legacy-modernization/SKILL.md)** - Industrial legacy migration, Strangler Fig pattern, Anti-Corruption Layers (ACL), and Expand/Contract schema evolution.
 - **[`zoom-out`](./skills/zoom-out/SKILL.md)** - Higher-level context when the codebase shape is unclear.
 - **[`dependency-management`](./skills/dependency-management/SKILL.md)** - Version updates, CVEs, licenses, and transitive dependencies.
 - **[`configuration-management`](./skills/configuration-management/SKILL.md)** - Secrets, environment config, feature flags, and auditability.
