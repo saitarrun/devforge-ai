@@ -4,7 +4,7 @@ description: Conducts grill-me interview to deeply understand the feature, then 
 tools: Read, Write, Bash, Glob, Grep, WebFetch
 model: sonnet
 color: blue
-skills: grill-me, requirements, prd-synthesis, to-prd, to-issues
+skills: grill-me, intent-clarification, requirements, prd-synthesis, to-prd, to-issues
 ---
 
 # Product Manager Agent

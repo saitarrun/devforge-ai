@@ -408,6 +408,7 @@ Commands are what you type. Agents are the role-specific workers. Skills are met
 These are the skills most central to the DevForge AI pipeline:
 
 - **[`grill-me`](./skills/grill-me/SKILL.md)** - Structured interrogation before planning.
+- **[`intent-clarification`](./skills/intent-clarification/SKILL.md)** - Deciphers latent requirements, resolves ambiguous prompts, and aligns goals.
 - **[`requirements`](./skills/requirements/SKILL.md)** - User stories, acceptance criteria, ambiguity checks, and INVEST-style decomposition.
 - **[`prd-synthesis`](./skills/prd-synthesis/SKILL.md)** - Converts context into product requirements.
 - **[`to-prd`](./skills/to-prd/SKILL.md)** - Synthesizes PRDs from current context and planning artifacts.
