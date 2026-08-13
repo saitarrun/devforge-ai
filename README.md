@@ -47,6 +47,102 @@ devforge-ai install
 /sdlc-operate
 ```
 
+## System Architecture
+
+```mermaid
+graph TD
+    classDef orchestrator fill:#1e293b,stroke:#64748b,stroke-width:2px,color:#f8fafc;
+    classDef phase fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef agent fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#f8fafc;
+    classDef artifact fill:#14532d,stroke:#4ade80,stroke-width:1px,color:#f8fafc;
+    classDef skill fill:#581c87,stroke:#c084fc,stroke-width:1px,color:#f8fafc;
+    classDef integration fill:#701a75,stroke:#f0abfc,stroke-width:1px,color:#f8fafc;
+
+    User([User / Developer]) -->|Execute /sdlc or Phase Commands| Orchestrator["/sdlc Orchestrator & CLI"]:::orchestrator
+
+    subgraph SDLC_Pipeline ["DevForge AI 5-Phase SDLC Pipeline"]
+        direction TB
+
+        subgraph Phase1 ["1. PLAN Phase (/sdlc-plan)"]
+            P1_Cmd["/sdlc-plan"]:::phase
+            P1_Agent["product-manager"]:::agent
+            P1_Art1["grill-summary.md"]:::artifact
+            P1_Art2["scope.json"]:::artifact
+            P1_Art3["01-prd.md"]:::artifact
+            
+            P1_Cmd --> P1_Agent
+            P1_Agent --> P1_Art1
+            P1_Agent --> P1_Art2
+            P1_Agent --> P1_Art3
+        end
+
+        subgraph Phase2 ["2. BUILD Phase (/sdlc-build)"]
+            P2_Cmd["/sdlc-build / /sdlc-implement"]:::phase
+            P2_A1["ux-designer (if has_ui)"]:::agent
+            P2_A2["fullstack-engineer"]:::agent
+            P2_A3["qa-engineer"]:::agent
+            P2_Art1["ux-design.md"]:::artifact
+            P2_Art2["Code & Tests"]:::artifact
+            P2_Art3["implementation-log.md"]:::artifact
+            
+            P2_Cmd --> P2_A1 & P2_A2 & P2_A3
+            P2_A1 --> P2_Art1
+            P2_A2 --> P2_Art2
+            P2_A2 --> P2_Art3
+            P2_A3 --> P2_Art2
+        end
+
+        subgraph Phase3 ["3. VERIFY Phase (/sdlc-verify)"]
+            P3_Cmd["/sdlc-verify"]:::phase
+            P3_A1["security-engineer"]:::agent
+            P3_A2["performance-engineer (gated)"]:::agent
+            P3_Art1["security-report.md"]:::artifact
+            P3_Art2["performance-report.md"]:::artifact
+            
+            P3_Cmd --> P3_A1 & P3_A2
+            P3_A1 --> P3_Art1
+            P3_A2 --> P3_Art2
+        end
+
+        subgraph Phase4 ["4. SHIP Phase (/sdlc-ship)"]
+            P4_Cmd["/sdlc-ship"]:::phase
+            P4_A1["devops-engineer"]:::agent
+            P4_Art1["CI/CD, Docker, K8s, Release Notes"]:::artifact
+            
+            P4_Cmd --> P4_A1
+            P4_A1 --> P4_Art1
+        end
+
+        subgraph Phase5 ["5. OPERATE Phase (/sdlc-operate)"]
+            P5_Cmd["/sdlc-operate"]:::phase
+            P5_A1["sre-engineer"]:::agent
+            P5_A2["data-engineer (gated)"]:::agent
+            P5_Art1["06-slo.md, Runbooks, Dashboards"]:::artifact
+            
+            P5_Cmd --> P5_A1 & P5_A2
+            P5_A1 & P5_A2 --> P5_Art1
+        end
+    end
+
+    Orchestrator --> P1_Cmd
+    Phase1 -->|plan-handoff.md| Phase2
+    Phase2 -->|build-handoff.md| Phase3
+    Phase3 -->|verify-handoff.md| Phase4
+    Phase4 -->|ship-handoff.md| Phase5
+
+    subgraph Core_Mechanisms ["Core Capabilities & Integrations"]
+        RalphLoop["Ralph Loop Self-Correction Engine"]:::skill
+        LinearInt["Linear Integration (Issues & Tracking)"]:::integration
+        GraphInt["code-review-graph Integration"]:::integration
+        SkillsLib["34 Knowledge Skills (grill-me, TDD, OWASP, SRE...)"]:::skill
+    end
+
+    Phase2 <--> RalphLoop
+    Phase1 <--> LinearInt
+    Phase2 <--> GraphInt
+    SDLC_Pipeline <.-> SkillsLib
+```
+
 ## Install From Source
 
 ```bash
