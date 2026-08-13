@@ -143,6 +143,97 @@ graph TD
     SDLC_Pipeline <.-> SkillsLib
 ```
 
+### SDLC Phase Handoff Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Developer / User
+    participant Orchestrator as /sdlc Orchestrator
+    participant Plan as Phase 1: Plan (/sdlc-plan)
+    participant Build as Phase 2: Build (/sdlc-build)
+    participant Verify as Phase 3: Verify (/sdlc-verify)
+    participant Ship as Phase 4: Ship (/sdlc-ship)
+    participant Operate as Phase 5: Operate (/sdlc-operate)
+    participant Storage as Project Artifacts Store
+
+    User->>Orchestrator: Run /sdlc "Feature Prompt"
+    
+    rect rgb(15, 23, 42)
+        note over Plan: Product Manager Agent
+        Orchestrator->>Plan: Trigger /sdlc-plan
+        Plan->>User: Conduct structured interview (grill-me)
+        User-->>Plan: Requirements & Answers
+        Plan->>Storage: Save grill-summary.md & scope.json (Tracer Bullet Slices)
+        Plan->>Storage: Save 01-prd.md & Linear Issues
+        Plan->>Storage: Write plan-handoff.md
+    end
+
+    rect rgb(23, 37, 84)
+        note over Build: UX Designer, Fullstack Engineer, QA Engineer
+        Orchestrator->>Build: Trigger /sdlc-build (Reads plan-handoff.md)
+        opt UI Feature (has_ui = true)
+            Build->>Storage: Save ux-design.md
+        end
+        loop For Each Slice in scope.json (Ralph Loop)
+            Build->>Build: Implement Slice across Schema/API/UI
+            Build->>Build: Run Tests & Typechecks (Self-Correction Loop)
+            Build->>Storage: Append slice output to implementation-log.md
+        end
+        Build->>Build: Run Cross-Slice E2E Tests (qa-engineer)
+        Build->>Storage: Write build-handoff.md
+    end
+
+    rect rgb(30, 41, 59)
+        note over Verify: Security & Performance Engineers
+        Orchestrator->>Verify: Trigger /sdlc-verify (Reads build-handoff.md)
+        Verify->>Storage: Save security-report.md (SAST / OWASP)
+        opt Performance Audit Required
+            Verify->>Storage: Save performance-report.md
+        end
+        Verify->>Storage: Write verify-handoff.md
+    end
+
+    rect rgb(20, 83, 45)
+        note over Ship: DevOps Engineer
+        Orchestrator->>Ship: Trigger /sdlc-ship (Reads verify-handoff.md)
+        Ship->>Storage: Generate CI/CD, Dockerfile, K8s manifests, Release Notes
+        Ship->>Storage: Write ship-handoff.md
+    end
+
+    rect rgb(88, 28, 135)
+        note over Operate: SRE & Data Engineers
+        Orchestrator->>Operate: Trigger /sdlc-operate (Reads ship-handoff.md)
+        Operate->>Storage: Save 06-slo.md, Runbooks, Dashboard Configs
+    end
+
+    Orchestrator-->>User: Pipeline Complete with Output Summary
+```
+
+### Ralph Loop Self-Correction Flowchart
+
+```mermaid
+flowchart TD
+    Start([Start Implementation Slice]) --> ReadSlice[Read Slice Specs from scope.json]
+    ReadSlice --> ImplementCode[Implement Code Slices across Layers]
+    ImplementCode --> RunVerification[Run Type Checks & Automated Tests]
+    
+    RunVerification --> CheckPass{Verification Passed?}
+    
+    CheckPass -- Yes --> AppendLog[Append Success Result to implementation-log.md]
+    AppendLog --> CheckMore{More Slices in scope.json?}
+    
+    CheckMore -- Yes --> NextSlice[Select Next Slice] --> ReadSlice
+    CheckMore -- No --> Complete([Complete Build Phase])
+
+    CheckPass -- No --> CheckRetries{Retry Limit Reached? <br/> Circuit Breaker}
+    
+    CheckRetries -- No --> ResetContext[Reset Context & Analyze Failure Logs]
+    ResetContext --> ApplyFix[Apply Corrective Code Fix] --> RunVerification
+
+    CheckRetries -- Yes --> Halt([Circuit Breaker Tripped: Pause & Report to User])
+```
+
 ## Install From Source
 
 ```bash
