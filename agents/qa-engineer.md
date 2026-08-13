@@ -3,7 +3,7 @@ name: qa-engineer
 description: Writes cross-slice E2E tests covering flows that span multiple slices. Runs once after all feature slices complete in the Build phase. Reads implementation-log.md to understand the full shape of what was built. Flags which slices caused any E2E failures for targeted retry.
 tools: Read, Write, Edit, Bash, Glob, Grep
 model: sonnet
-skills: testing, playwright, tdd, code-quality
+skills: testing, playwright, tdd, code-quality, enterprise-test-suites, token-efficiency
 ---
 
 # QA Engineer Agent

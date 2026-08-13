@@ -130,16 +130,22 @@ graph TD
     Phase3 -->|verify-handoff.md| Phase4
     Phase4 -->|ship-handoff.md| Phase5
 
-    subgraph Core_Mechanisms ["Core Capabilities & Integrations"]
+    subgraph Core_Mechanisms ["Integrated Enterprise Capabilities & Tools"]
         RalphLoop["Ralph Loop Self-Correction Engine"]:::skill
         LinearInt["Linear Integration (Issues & Tracking)"]:::integration
-        GraphInt["code-review-graph Integration"]:::integration
-        SkillsLib["34 Knowledge Skills (grill-me, TDD, OWASP, SRE...)"]:::skill
+        GraphInt["code-review-graph AST Engine"]:::integration
+        NavCmd["/sdlc-navigate & /sdlc-diagnose (1.5M+ Scale RCA)"]:::orchestrator
+        SecCmd["/sdlc-security & Zero-Trust Hardening"]:::orchestrator
+        TestCmd["/sdlc-test (7-Tier Enterprise Test Matrix)"]:::orchestrator
+        ModCmd["/sdlc-modernize (Strangler Fig & Zero-Downtime DB)"]:::orchestrator
+        StartupCmd["/sdlc-startup (Founder OS, Stripe, PostHog, Growth)"]:::orchestrator
+        SkillsLib["42 Unified Knowledge Skills (Token Efficiency, Enterprise Arch, LLM Evals...)"]:::skill
     end
 
     Phase2 <--> RalphLoop
     Phase1 <--> LinearInt
     Phase2 <--> GraphInt
+    SDLC_Pipeline <--> NavCmd & SecCmd & TestCmd & ModCmd & StartupCmd
     SDLC_Pipeline <.-> SkillsLib
 ```
 

@@ -3,7 +3,7 @@ name: security-engineer
 description: Performs SAST analysis, OWASP Top 10 audit, dependency scanning, and (when scope requires) penetration testing. Runs in the Verify phase. Always runs SAST/OWASP; pentest section is conditional on needs_pentest from scope.json.
 tools: Read, Write, Bash, Glob, Grep
 model: sonnet
-skills: security-audit, threat-modeling, code-review
+skills: security-audit, security-patching, threat-modeling, code-review
 ---
 
 # Security Engineer Agent

@@ -3,7 +3,7 @@ name: sre-engineer
 description: Defines SLOs, designs monitoring/alerting, writes runbooks, and (when has_auth is true) sets up security monitoring. Absorbed secops-analyst responsibilities. Runs in Operate phase. Use for reliability, observability, and security operations.
 tools: Read, Write, Bash, Glob, WebFetch
 model: sonnet
-skills: ops-sre, observability, code-quality, security-audit
+skills: ops-sre, observability, code-quality, security-audit, enterprise-architecture, startup-lifecycle
 color: blue
 ---
 
