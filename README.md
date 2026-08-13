@@ -247,6 +247,72 @@ flowchart TD
     CheckRetries -- Yes --> Halt([Circuit Breaker Tripped: Pause & Report to User])
 ```
 
+### Hyper-Scale Root Cause Analysis (1.5M Files -> 1 File)
+
+```mermaid
+flowchart TD
+    classDef domain fill:#1e293b,stroke:#64748b,stroke-width:2px,color:#f8fafc;
+    classDef graph fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef trace fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#f8fafc;
+    classDef fix fill:#14532d,stroke:#4ade80,stroke-width:1px,color:#f8fafc;
+
+    Bug(["Defect / Error in 1.5M File Codebase<br/>(e.g., Insurance Claim / Underwriting Bug)"]) --> L1
+
+    subgraph Funnel ["The Hyper-Scale Funnel (/sdlc-diagnose)"]
+        L1["1. Domain & Service Isolation<br/>(1.5M Files → ~500 Files)<br/>Logs / Stack Traces / Boundary Filtering"]:::domain
+        L2["2. AST Knowledge Graph Traversal<br/>(~500 Files → ~20 Files)<br/>code-review-graph / Call Trees"]:::graph
+        L3["3. Delta & State Flow Backtracking<br/>(~20 Files → 1-3 Files)<br/>Input Mutations & Persistence Seams"]:::trace
+        L4["4. Surgical Automated Remediation<br/>(Exact Lines Fixed)<br/>Ralph Loop & Repro Test Harness"]:::fix
+        
+        L1 --> L2 --> L3 --> L4
+    end
+
+    L4 --> Regression["Blast-Radius & Contract Regression Check"]:::fix
+    Regression --> Fixed(["✅ Defect Resolved with Zero Secondary Breakages"])
+```
+
+### Enterprise Multi-Tier Test Suite Matrix
+
+```mermaid
+graph TD
+    classDef unit fill:#1e293b,stroke:#64748b,stroke-width:2px,color:#f8fafc;
+    classDef integ fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef contract fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#f8fafc;
+    classDef e2e fill:#14532d,stroke:#4ade80,stroke-width:1px,color:#f8fafc;
+    classDef specialized fill:#581c87,stroke:#c084fc,stroke-width:1px,color:#f8fafc;
+
+    TestMatrix["Enterprise Test Matrix (/sdlc-test)"]:::unit
+
+    TestMatrix --> T1["1. Unit Tests (Vitest / PyTest)<br/>Fast pure business logic (>80% coverage)"]:::unit
+    TestMatrix --> T2["2. Integration Tests (Testcontainers)<br/>Real ephemeral PostgreSQL, Redis & Kafka"]:::integ
+    TestMatrix --> T3["3. Contract Tests (Pact / OpenAPI)<br/>Consumer-driven schema parity & drift detection"]:::contract
+    TestMatrix --> T4["4. End-to-End Tests (Playwright)<br/>Multi-step browser journeys & visual regression"]:::e2e
+    TestMatrix --> T5["5. Performance & Load (k6 / Artillery)<br/>500+ RPS concurrency & latency budgets"]:::specialized
+    TestMatrix --> T6["6. Chaos & Resilience Testing<br/>Fault injection, DB failover & network latency"]:::specialized
+    TestMatrix --> T7["7. Security & Property Fuzzing (Fast-Check)<br/>10,000+ randomized mutation checks"]:::specialized
+```
+
+### Industrial Legacy Modernization (Strangler Fig)
+
+```mermaid
+flowchart LR
+    classDef legacy fill:#1e293b,stroke:#64748b,stroke-width:2px,color:#f8fafc;
+    classDef proxy fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef acl fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#f8fafc;
+    classDef modern fill:#14532d,stroke:#4ade80,stroke-width:1px,color:#f8fafc;
+
+    Clients(["Client Ingress"]) --> Proxy["API Gateway / Routing Proxy"]:::proxy
+
+    subgraph Modernization ["Strangler Fig Pipeline (/sdlc-modernize)"]
+        Proxy -->|1% → 50% → 100% Traffic| ACL["Anti-Corruption Layer (ACL)"]:::acl
+        ACL --> Modern["Modern Microservice Engine"]:::modern
+        
+        Proxy -.->|Legacy Reads / Fallback| LegacyMonolith["Legacy Monolith / Stored Procedures"]:::legacy
+    end
+
+    Modern --> ZeroDowntimeDB["Zero-Downtime DB (Expand & Contract)"]:::modern
+```
+
 ## Install From Source
 
 ```bash
