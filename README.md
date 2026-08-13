@@ -390,6 +390,7 @@ Commands are what you type. Agents are the role-specific workers. Skills are met
 - **[`/sdlc-security`](./commands/sdlc-security.md)** - Automated security vulnerability remediation, CVE patching, and Zero-Trust protocol hardening.
 - **[`/sdlc-modernize`](./commands/sdlc-modernize.md)** - Industrial legacy modernization, Strangler Fig migrations, and zero-downtime schema evolution.
 - **[`/sdlc-test`](./commands/sdlc-test.md)** - Enterprise multi-tier test suite execution (Unit, Integration, Contract, E2E, Load/k6, Chaos, Fuzzing).
+- **[`/sdlc-startup`](./commands/sdlc-startup.md)** - End-to-end founder & startup playbook: Stripe billing, PostHog telemetry, and unit economics.
 - **[`/sdlc-review`](./commands/sdlc-review.md)** - Pull request review using parallel reviewer perspectives.
 - **[`/to-prd`](./commands/to-prd.md)** - Regenerate a PRD from existing planning artifacts.
 - **[`/to-issues`](./commands/to-issues.md)** - Create one issue per tracer bullet slice from `scope.json`.
@@ -440,6 +441,7 @@ These are the skills most central to the DevForge AI pipeline:
 - **[`root-cause-analysis`](./skills/root-cause-analysis/SKILL.md)** - Hyper-scale root cause bisection, call-tree backtracking, and automated surgical remediation.
 - **[`legacy-modernization`](./skills/legacy-modernization/SKILL.md)** - Industrial legacy migration, Strangler Fig pattern, Anti-Corruption Layers (ACL), and Expand/Contract schema evolution.
 - **[`enterprise-test-suites`](./skills/enterprise-test-suites/SKILL.md)** - Multi-tier testing matrix: Testcontainers integration, Pact contracts, k6 load benchmarks, Chaos fault-injection, and Fuzzing.
+- **[`startup-lifecycle`](./skills/startup-lifecycle/SKILL.md)** - SaaS pricing models, Stripe billing, PostHog telemetry, growth loops, and investor unit economics (CAC, LTV, MRR).
 - **[`zoom-out`](./skills/zoom-out/SKILL.md)** - Higher-level context when the codebase shape is unclear.
 - **[`dependency-management`](./skills/dependency-management/SKILL.md)** - Version updates, CVEs, licenses, and transitive dependencies.
 - **[`configuration-management`](./skills/configuration-management/SKILL.md)** - Secrets, environment config, feature flags, and auditability.
