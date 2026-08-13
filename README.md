@@ -252,7 +252,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     classDef domain fill:#1e293b,stroke:#64748b,stroke-width:2px,color:#f8fafc;
-    classDef graph fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef astgraph fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
     classDef trace fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#f8fafc;
     classDef fix fill:#14532d,stroke:#4ade80,stroke-width:1px,color:#f8fafc;
 
@@ -260,7 +260,7 @@ flowchart TD
 
     subgraph Funnel ["The Hyper-Scale Funnel (/sdlc-diagnose)"]
         L1["1. Domain & Service Isolation<br/>(1.5M Files → ~500 Files)<br/>Logs / Stack Traces / Boundary Filtering"]:::domain
-        L2["2. AST Knowledge Graph Traversal<br/>(~500 Files → ~20 Files)<br/>code-review-graph / Call Trees"]:::graph
+        L2["2. AST Knowledge Graph Traversal<br/>(~500 Files → ~20 Files)<br/>code-review-graph / Call Trees"]:::astgraph
         L3["3. Delta & State Flow Backtracking<br/>(~20 Files → 1-3 Files)<br/>Input Mutations & Persistence Seams"]:::trace
         L4["4. Surgical Automated Remediation<br/>(Exact Lines Fixed)<br/>Ralph Loop & Repro Test Harness"]:::fix
         
