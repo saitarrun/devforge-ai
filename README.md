@@ -31,20 +31,27 @@ sudo npm install -g devforge-ai
 devforge-ai install
 ```
 
-3. Restart Claude Code, then run the full pipeline:
+3. Restart Claude Code, then view the interactive navigator:
 
 ```bash
-/sdlc "build a login page"
+/sdlc-help
 ```
 
-4. Or run one phase at a time:
+4. Or run commands by scenario:
 
 ```bash
-/sdlc-plan "add OAuth login"
-/sdlc-build
-/sdlc-verify
-/sdlc-ship
-/sdlc-operate
+# 🚀 Full Autonomous Pipeline & Startups
+/sdlc "build a login page"
+/sdlc-startup "AI copilot for insurance brokers"
+
+# 🔍 Codebase Exploration & Root Cause Debugging (Up to 1.5M Files)
+/sdlc-navigate "AuthService"
+/sdlc-diagnose "500 error in checkout calculation"
+
+# 🛡️ Security, Patching, Tests, & Legacy Modernization
+/sdlc-security --fix-cves
+/sdlc-modernize "legacy_engine.c"
+/sdlc-test --suite all
 ```
 
 ## System Architecture
@@ -384,6 +391,7 @@ Commands are what you type. Agents are the role-specific workers. Skills are met
 
 ### Commands
 
+- **[`/sdlc-help`](./commands/sdlc-help.md)** - Interactive command navigator and scenario guide (zero confusion).
 - **[`/sdlc`](./commands/sdlc.md)** - Master orchestrator for the full Plan -> Build -> Verify -> Ship -> Operate pipeline.
 - **[`/sdlc-plan`](./commands/sdlc-plan.md)** - Product planning, interview, PRD, scope, and issues.
 - **[`/sdlc-build`](./commands/sdlc-build.md)** - UX design, slice implementation, Ralph Loop retries, and QA.
