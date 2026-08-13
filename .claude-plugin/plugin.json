@@ -1,7 +1,7 @@
 {
   "name": "devforge-ai",
-  "version": "2.0.2",
-  "description": "Tracer bullet SDLC plugin: 10 agents across 5 phases (plan, build, verify, ship, operate), 34 knowledge skills, 10 commands. Ralph Loop self-correction, Linear issue integration, scope.json as single source of truth.",
+  "version": "2.0.5",
+  "description": "Enterprise & Startup SDLC orchestration plugin: 10 agents across 5 phases (Plan, Build, Verify, Ship, Operate), 43 knowledge skills, 16 commands. Hyper-scale RCA, 7-tier test matrix, Stripe monetization, and dynamic autonomous routing.",
   "keywords": [
     "sdlc",
     "workflow",
@@ -12,7 +12,10 @@
     "devops",
     "ci-cd",
     "tracer-bullet",
-    "ralph-loop"
+    "ralph-loop",
+    "root-cause-analysis",
+    "startup",
+    "dynamic-routing"
   ],
   "homepage": "https://github.com/saitarrun/devforge-ai",
   "repository": {
@@ -25,8 +28,8 @@
   },
   "license": "MIT",
   "agents": 10,
-  "skills": 34,
-  "commands": 10,
+  "skills": 43,
+  "commands": 16,
   "integrations": {
     "code-review-graph": {
       "name": "code-review-graph",
@@ -44,7 +47,11 @@
     "Ralph Loop — self-correcting inner/outer retry with circuit breaker",
     "scope.json as single source of truth with Linear issue integration",
     "Handoff documents keep each phase context bounded",
-    "34 knowledge skills injected as methodology context",
-    "Integrated code-review-graph for visual dependency analysis"
+    "43 knowledge skills injected as methodology context",
+    "Integrated code-review-graph for visual dependency analysis",
+    "Hyper-scale Root Cause Analysis (1.5M file filtering)",
+    "7-Tier Enterprise Test Matrix (Unit, Integration, Contract, E2E, Load, Chaos, Fuzz)",
+    "Startup Growth & SaaS monetization engine (Stripe, PostHog, Unit Economics)",
+    "Autonomous Dynamic Routing for natural language request dispatch"
   ]
 }
