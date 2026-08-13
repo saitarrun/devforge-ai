@@ -385,6 +385,7 @@ Commands are what you type. Agents are the role-specific workers. Skills are met
 - **[`/sdlc-ship`](./commands/sdlc-ship.md)** - CI/CD, cloud infrastructure, containerization, and release.
 - **[`/sdlc-operate`](./commands/sdlc-operate.md)** - SLOs, runbooks, monitoring, and data pipelines.
 - **[`/sdlc-implement`](./commands/sdlc-implement.md)** - Standalone issue or free-form implementation with Ralph Loop verification.
+- **[`/sdlc-navigate`](./commands/sdlc-navigate.md)** - Structural codebase navigation, symbol call-graphs, impact analysis, and module boundary mapping.
 - **[`/sdlc-review`](./commands/sdlc-review.md)** - Pull request review using parallel reviewer perspectives.
 - **[`/to-prd`](./commands/to-prd.md)** - Regenerate a PRD from existing planning artifacts.
 - **[`/to-issues`](./commands/to-issues.md)** - Create one issue per tracer bullet slice from `scope.json`.
@@ -425,6 +426,7 @@ These are the skills most central to the DevForge AI pipeline:
 - **[`architecture`](./skills/architecture/SKILL.md)** - System design, ADRs, coupling, service boundaries, and tradeoffs.
 - **[`architecture-refactor`](./skills/architecture-refactor/SKILL.md)** - Finds architecture improvement opportunities.
 - **[`api-design`](./skills/api-design/SKILL.md)** - API contracts, OpenAPI, versioning, error design, and compatibility.
+- **[`codebase-navigator`](./skills/codebase-navigator/SKILL.md)** - AST dependency graph traversal, monorepo navigation, caller/callee tracing, and change impact.
 - **[`code-quality`](./skills/code-quality/SKILL.md)** - Linting, tests, coverage, security checks, and CI guardrails.
 - **[`code-standards`](./skills/code-standards/SKILL.md)** - Naming, structure, maintainability, and implementation conventions.
 - **[`code-review`](./skills/code-review/SKILL.md)** - Review discipline for correctness and maintainability.
