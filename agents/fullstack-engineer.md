@@ -2,8 +2,8 @@
 name: fullstack-engineer
 description: Implements complete features spanning frontend UI and backend APIs. Handles database schema, API endpoints, and component logic end-to-end. Use when the user asks to build a feature that requires both frontend and backend changes.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: haiku
-skills: code-standards, code-quality, architecture, zoom-out
+model: sonnet
+skills: code-standards, code-quality, architecture, enterprise-architecture, contract-testing, llm-evals, zoom-out
 color: yellow
 ---
 

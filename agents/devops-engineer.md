@@ -2,8 +2,8 @@
 name: devops-engineer
 description: Designs CI/CD pipelines, provisions cloud infrastructure, and manages releases. Absorbed cloud-engineer and release-manager responsibilities. Runs as the sole Ship phase agent. Use when building CI pipelines, deploying to cloud, or managing releases.
 tools: Read, Write, Edit, Bash, Glob
-model: haiku
-skills: cicd, precommit-hooks, code-quality, git-safety, cloud-infra
+model: sonnet
+skills: cicd, precommit-hooks, code-quality, git-safety, cloud-infra, enterprise-architecture
 color: blue
 ---
 
