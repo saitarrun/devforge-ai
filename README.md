@@ -387,6 +387,7 @@ Commands are what you type. Agents are the role-specific workers. Skills are met
 - **[`/sdlc-implement`](./commands/sdlc-implement.md)** - Standalone issue or free-form implementation with Ralph Loop verification.
 - **[`/sdlc-navigate`](./commands/sdlc-navigate.md)** - Structural codebase navigation, symbol call-graphs, impact analysis, and module boundary mapping.
 - **[`/sdlc-diagnose`](./commands/sdlc-diagnose.md)** - Automated Root-Cause Analysis (RCA) and surgical fix engine for massive 1.5M+ file repositories.
+- **[`/sdlc-security`](./commands/sdlc-security.md)** - Automated security vulnerability remediation, CVE patching, and Zero-Trust protocol hardening.
 - **[`/sdlc-review`](./commands/sdlc-review.md)** - Pull request review using parallel reviewer perspectives.
 - **[`/to-prd`](./commands/to-prd.md)** - Regenerate a PRD from existing planning artifacts.
 - **[`/to-issues`](./commands/to-issues.md)** - Create one issue per tracer bullet slice from `scope.json`.
@@ -448,6 +449,7 @@ These are the skills most central to the DevForge AI pipeline:
 ### Security, Delivery, And Operations Skills
 
 - **[`security-audit`](./skills/security-audit/SKILL.md)** - Security review, OWASP checks, and vulnerability scanning.
+- **[`security-patching`](./skills/security-patching/SKILL.md)** - Automated CVE remediation, Zero-Trust protocol implementation, and security hardening.
 - **[`threat-modeling`](./skills/threat-modeling/SKILL.md)** - STRIDE and attack-surface analysis.
 - **[`performance-optimization`](./skills/performance-optimization/SKILL.md)** - Profiling, benchmarking, and performance budgets.
 - **[`observability`](./skills/observability/SKILL.md)** - Metrics, logs, traces, dashboards, alerts, and SLOs.
