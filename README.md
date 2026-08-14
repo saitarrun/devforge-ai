@@ -15,7 +15,7 @@
   <a href="https://github.com/saitarrun/devforge-ai"><img src="https://img.shields.io/badge/SDLC-Automation-green?style=flat-square" alt="SDLC Automation"></a>
 </p>
 
-An agentic SDLC orchestration system for Claude Code. DevForge AI turns an idea into a planned, built, verified, shipped, and operated feature using role-specific agents, tracer bullet slices, quality gates, and handoff documents.
+An agentic SDLC orchestration system for Agentic AI. DevForge AI turns an idea into a planned, built, verified, shipped, and operated feature using role-specific agents, tracer bullet slices, quality gates, and handoff documents.
 
 This is not a one-shot code generator. DevForge AI is a delivery workflow: product thinking first, thin vertical slices, feedback loops, security and performance checks, deployment assets, and operational follow-through.
 
@@ -27,13 +27,13 @@ This is not a one-shot code generator. DevForge AI is a delivery workflow: produ
 sudo npm install -g devforge-ai
 ```
 
-2. Install the DevForge AI agents, skills, commands, and integrations into Claude Code:
+2. Install the DevForge AI agents, skills, commands, and integrations into Agentic AI:
 
 ```bash
 devforge-ai install
 ```
 
-3. Restart Claude Code, then view the interactive navigator:
+3. Restart Agentic AI, then view the interactive navigator:
 
 ```bash
 /sdlc-help
@@ -324,7 +324,7 @@ npm install
 npm run install-local
 ```
 
-Restart Claude Code after installing. See [INSTALLATION.md](INSTALLATION.md) for update, symlink, and uninstall instructions.
+Restart Agentic AI after installing. See [INSTALLATION.md](INSTALLATION.md) for update, symlink, and uninstall instructions.
 
 ## Why DevForge AI Exists
 

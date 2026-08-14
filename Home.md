@@ -1,6 +1,6 @@
 # DevForge AI Wiki
 
-> **Transform Ideas into Shipped, Operated Software** — An AI-powered SDLC workflow system for Claude Code with role-specific agents, tracer bullet delivery, and structured feedback loops.
+> **Transform Ideas into Shipped, Operated Software** — An AI-powered SDLC workflow system for Agentic AI with role-specific agents, tracer bullet delivery, and structured feedback loops.
 
 ---
 
@@ -12,10 +12,10 @@
 # Install from npm
 sudo npm install -g devforge-ai
 
-# Install into Claude Code
+# Install into Agentic AI
 devforge-ai install
 
-# Restart Claude Code, then try it
+# Restart Agentic AI, then try it
 /sdlc "build a login page"
 ```
 
