@@ -1,6 +1,6 @@
-<p>
+<p align="center">
   <a href="https://github.com/saitarrun/devforge-ai">
-    <img alt="DevForge AI" src="https://img.shields.io/badge/DevForge__AI-Agentic%20Workflow%20for%20Developers-111827?style=for-the-badge&logo=github&logoColor=white" width="369">
+    <img src="assets/banner.svg" alt="DEVFORGE - AI" width="100%">
   </a>
 </p>
 
@@ -8,10 +8,12 @@
 
 > **Optimised SDLC AI workflow** — 10 role-specific agents × 5 phases with tracer bullet delivery and self-correction loops
 
-[![npm version](https://img.shields.io/npm/v/%40saitarrunpitta%2Fdevforge-ai?style=flat-square&color=blue)](https://www.npmjs.com/package/@saitarrunpitta/devforge-ai)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square)](LICENSE)
-[![Node.js](https://img.shields.io/badge/Node.js->=18.0.0-green?style=flat-square&logo=node.js)](https://nodejs.org/)
-[![SDLC Automation](https://img.shields.io/badge/SDLC-Automation-green?style=flat-square)](https://github.com/saitarrun/devforge-ai)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@saitarrunpitta/devforge-ai"><img src="https://img.shields.io/npm/v/%40saitarrunpitta%2Fdevforge-ai?style=flat-square&color=blue" alt="npm version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square" alt="License: Apache 2.0"></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js->=18.0.0-green?style=flat-square&logo=node.js" alt="Node.js"></a>
+  <a href="https://github.com/saitarrun/devforge-ai"><img src="https://img.shields.io/badge/SDLC-Automation-green?style=flat-square" alt="SDLC Automation"></a>
+</p>
 
 An agentic SDLC orchestration system for Claude Code. DevForge AI turns an idea into a planned, built, verified, shipped, and operated feature using role-specific agents, tracer bullet slices, quality gates, and handoff documents.
 
